@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		898ED1332041956800AB8726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1322041956800AB8726 /* AppDelegate.swift */; };
+		898ED1352041956800AB8726 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1342041956800AB8726 /* MasterViewController.swift */; };
+		898ED1372041956800AB8726 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1362041956800AB8726 /* DetailViewController.swift */; };
+		898ED13A2041956800AB8726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898ED1382041956800AB8726 /* Main.storyboard */; };
+		898ED13C2041956800AB8726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 898ED13B2041956800AB8726 /* Assets.xcassets */; };
+		898ED13F2041956800AB8726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898ED13D2041956800AB8726 /* LaunchScreen.storyboard */; };
+		898ED14A2041956800AB8726 /* Dining_HallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1492041956800AB8726 /* Dining_HallTests.swift */; };
+		898ED1552041956800AB8726 /* Dining_HallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1542041956800AB8726 /* Dining_HallUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		898ED1462041956800AB8726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898ED1272041956800AB8726 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 898ED12E2041956800AB8726;
+			remoteInfo = "Dining Hall";
+		};
+		898ED1512041956800AB8726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898ED1272041956800AB8726 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 898ED12E2041956800AB8726;
+			remoteInfo = "Dining Hall";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		898ED12F2041956800AB8726 /* Dining Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dining Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		898ED1322041956800AB8726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		898ED1342041956800AB8726 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		898ED1362041956800AB8726 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		898ED1392041956800AB8726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		898ED13B2041956800AB8726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		898ED13E2041956800AB8726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		898ED1402041956800AB8726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		898ED1452041956800AB8726 /* Dining HallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dining HallTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		898ED1492041956800AB8726 /* Dining_HallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dining_HallTests.swift; sourceTree = "<group>"; };
+		898ED14B2041956800AB8726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		898ED1502041956800AB8726 /* Dining HallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dining HallUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		898ED1542041956800AB8726 /* Dining_HallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dining_HallUITests.swift; sourceTree = "<group>"; };
+		898ED1562041956800AB8726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		898ED12C2041956800AB8726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED1422041956800AB8726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED14D2041956800AB8726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		898ED1262041956800AB8726 = {
+			isa = PBXGroup;
+			children = (
+				898ED1312041956800AB8726 /* Dining Hall */,
+				898ED1482041956800AB8726 /* Dining HallTests */,
+				898ED1532041956800AB8726 /* Dining HallUITests */,
+				898ED1302041956800AB8726 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		898ED1302041956800AB8726 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				898ED12F2041956800AB8726 /* Dining Hall.app */,
+				898ED1452041956800AB8726 /* Dining HallTests.xctest */,
+				898ED1502041956800AB8726 /* Dining HallUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		898ED1312041956800AB8726 /* Dining Hall */ = {
+			isa = PBXGroup;
+			children = (
+				898ED1322041956800AB8726 /* AppDelegate.swift */,
+				898ED1342041956800AB8726 /* MasterViewController.swift */,
+				898ED1362041956800AB8726 /* DetailViewController.swift */,
+				898ED1382041956800AB8726 /* Main.storyboard */,
+				898ED13B2041956800AB8726 /* Assets.xcassets */,
+				898ED13D2041956800AB8726 /* LaunchScreen.storyboard */,
+				898ED1402041956800AB8726 /* Info.plist */,
+			);
+			path = "Dining Hall";
+			sourceTree = "<group>";
+		};
+		898ED1482041956800AB8726 /* Dining HallTests */ = {
+			isa = PBXGroup;
+			children = (
+				898ED1492041956800AB8726 /* Dining_HallTests.swift */,
+				898ED14B2041956800AB8726 /* Info.plist */,
+			);
+			path = "Dining HallTests";
+			sourceTree = "<group>";
+		};
+		898ED1532041956800AB8726 /* Dining HallUITests */ = {
+			isa = PBXGroup;
+			children = (
+				898ED1542041956800AB8726 /* Dining_HallUITests.swift */,
+				898ED1562041956800AB8726 /* Info.plist */,
+			);
+			path = "Dining HallUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		898ED12E2041956800AB8726 /* Dining Hall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 898ED1592041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining Hall" */;
+			buildPhases = (
+				898ED12B2041956800AB8726 /* Sources */,
+				898ED12C2041956800AB8726 /* Frameworks */,
+				898ED12D2041956800AB8726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dining Hall";
+			productName = "Dining Hall";
+			productReference = 898ED12F2041956800AB8726 /* Dining Hall.app */;
+			productType = "com.apple.product-type.application";
+		};
+		898ED1442041956800AB8726 /* Dining HallTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 898ED15C2041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining HallTests" */;
+			buildPhases = (
+				898ED1412041956800AB8726 /* Sources */,
+				898ED1422041956800AB8726 /* Frameworks */,
+				898ED1432041956800AB8726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				898ED1472041956800AB8726 /* PBXTargetDependency */,
+			);
+			name = "Dining HallTests";
+			productName = "Dining HallTests";
+			productReference = 898ED1452041956800AB8726 /* Dining HallTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		898ED14F2041956800AB8726 /* Dining HallUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 898ED15F2041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining HallUITests" */;
+			buildPhases = (
+				898ED14C2041956800AB8726 /* Sources */,
+				898ED14D2041956800AB8726 /* Frameworks */,
+				898ED14E2041956800AB8726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				898ED1522041956800AB8726 /* PBXTargetDependency */,
+			);
+			name = "Dining HallUITests";
+			productName = "Dining HallUITests";
+			productReference = 898ED1502041956800AB8726 /* Dining HallUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		898ED1272041956800AB8726 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Femi Lamptey";
+				TargetAttributes = {
+					898ED12E2041956800AB8726 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					898ED1442041956800AB8726 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 898ED12E2041956800AB8726;
+					};
+					898ED14F2041956800AB8726 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 898ED12E2041956800AB8726;
+					};
+				};
+			};
+			buildConfigurationList = 898ED12A2041956800AB8726 /* Build configuration list for PBXProject "Dining Hall" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 898ED1262041956800AB8726;
+			productRefGroup = 898ED1302041956800AB8726 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				898ED12E2041956800AB8726 /* Dining Hall */,
+				898ED1442041956800AB8726 /* Dining HallTests */,
+				898ED14F2041956800AB8726 /* Dining HallUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		898ED12D2041956800AB8726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898ED13F2041956800AB8726 /* LaunchScreen.storyboard in Resources */,
+				898ED13C2041956800AB8726 /* Assets.xcassets in Resources */,
+				898ED13A2041956800AB8726 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED1432041956800AB8726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED14E2041956800AB8726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		898ED12B2041956800AB8726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
+				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
+				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED1412041956800AB8726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898ED14A2041956800AB8726 /* Dining_HallTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898ED14C2041956800AB8726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898ED1552041956800AB8726 /* Dining_HallUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		898ED1472041956800AB8726 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 898ED12E2041956800AB8726 /* Dining Hall */;
+			targetProxy = 898ED1462041956800AB8726 /* PBXContainerItemProxy */;
+		};
+		898ED1522041956800AB8726 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 898ED12E2041956800AB8726 /* Dining Hall */;
+			targetProxy = 898ED1512041956800AB8726 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		898ED1382041956800AB8726 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				898ED1392041956800AB8726 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		898ED13D2041956800AB8726 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				898ED13E2041956800AB8726 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		898ED1572041956800AB8726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		898ED1582041956800AB8726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		898ED15A2041956800AB8726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		898ED15B2041956800AB8726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		898ED15D2041956800AB8726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining HallTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-HallTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dining Hall.app/Dining Hall";
+			};
+			name = Debug;
+		};
+		898ED15E2041956800AB8726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining HallTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-HallTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dining Hall.app/Dining Hall";
+			};
+			name = Release;
+		};
+		898ED1602041956800AB8726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining HallUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-HallUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dining Hall";
+			};
+			name = Debug;
+		};
+		898ED1612041956800AB8726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ARTFJJ5GB9;
+				INFOPLIST_FILE = "Dining HallUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-HallUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dining Hall";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		898ED12A2041956800AB8726 /* Build configuration list for PBXProject "Dining Hall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				898ED1572041956800AB8726 /* Debug */,
+				898ED1582041956800AB8726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		898ED1592041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining Hall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				898ED15A2041956800AB8726 /* Debug */,
+				898ED15B2041956800AB8726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		898ED15C2041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining HallTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				898ED15D2041956800AB8726 /* Debug */,
+				898ED15E2041956800AB8726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		898ED15F2041956800AB8726 /* Build configuration list for PBXNativeTarget "Dining HallUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				898ED1602041956800AB8726 /* Debug */,
+				898ED1612041956800AB8726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 898ED1272041956800AB8726 /* Project object */;
+}
