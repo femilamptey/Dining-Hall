@@ -15,6 +15,13 @@
 		898ED13F2041956800AB8726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898ED13D2041956800AB8726 /* LaunchScreen.storyboard */; };
 		898ED14A2041956800AB8726 /* Dining_HallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1492041956800AB8726 /* Dining_HallTests.swift */; };
 		898ED1552041956800AB8726 /* Dining_HallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1542041956800AB8726 /* Dining_HallUITests.swift */; };
+		89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */; };
+		89CF712B2057F645005B7D43 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF712A2057F645005B7D43 /* Function.swift */; };
+		89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */; };
+		89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */; };
+		89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF1396205866EB004A0018 /* AddWastageViewController.swift */; };
+		89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF139820586701004A0018 /* ReviewWastageViewController.swift */; };
+		89EF139C20586AF1004A0018 /* Default768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EF139B20586AF1004A0018 /* Default768x1024.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		898ED1502041956800AB8726 /* Dining HallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dining HallUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898ED1542041956800AB8726 /* Dining_HallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dining_HallUITests.swift; sourceTree = "<group>"; };
 		898ED1562041956800AB8726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArrangementViewController.swift; sourceTree = "<group>"; };
+		89CF712A2057F645005B7D43 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
+		89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAbsenteesViewController.swift; sourceTree = "<group>"; };
+		89EF1396205866EB004A0018 /* AddWastageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWastageViewController.swift; sourceTree = "<group>"; };
+		89EF139820586701004A0018 /* ReviewWastageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWastageViewController.swift; sourceTree = "<group>"; };
+		89EF139B20586AF1004A0018 /* Default768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default768x1024.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +113,20 @@
 		898ED1312041956800AB8726 /* Dining Hall */ = {
 			isa = PBXGroup;
 			children = (
+				89EF139A20586AB1004A0018 /* LaunchImage */,
 				898ED1322041956800AB8726 /* AppDelegate.swift */,
-				898ED1342041956800AB8726 /* MasterViewController.swift */,
 				898ED1362041956800AB8726 /* DetailViewController.swift */,
+				898ED1342041956800AB8726 /* MasterViewController.swift */,
 				898ED1382041956800AB8726 /* Main.storyboard */,
 				898ED13B2041956800AB8726 /* Assets.xcassets */,
 				898ED13D2041956800AB8726 /* LaunchScreen.storyboard */,
 				898ED1402041956800AB8726 /* Info.plist */,
+				89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */,
+				89CF712A2057F645005B7D43 /* Function.swift */,
+				89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */,
+				89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */,
+				89EF1396205866EB004A0018 /* AddWastageViewController.swift */,
+				89EF139820586701004A0018 /* ReviewWastageViewController.swift */,
 			);
 			path = "Dining Hall";
 			sourceTree = "<group>";
@@ -126,6 +147,14 @@
 				898ED1562041956800AB8726 /* Info.plist */,
 			);
 			path = "Dining HallUITests";
+			sourceTree = "<group>";
+		};
+		89EF139A20586AB1004A0018 /* LaunchImage */ = {
+			isa = PBXGroup;
+			children = (
+				89EF139B20586AF1004A0018 /* Default768x1024.png */,
+			);
+			path = LaunchImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +267,7 @@
 				898ED13F2041956800AB8726 /* LaunchScreen.storyboard in Resources */,
 				898ED13C2041956800AB8726 /* Assets.xcassets in Resources */,
 				898ED13A2041956800AB8726 /* Main.storyboard in Resources */,
+				89EF139C20586AF1004A0018 /* Default768x1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */,
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
+				89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */,
+				89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */,
 				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
+				89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */,
+				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
+				89CF712B2057F645005B7D43 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,14 +466,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
 				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -445,14 +483,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
 				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

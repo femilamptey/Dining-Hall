@@ -10,6 +10,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    let functions: [Function] = [.AddArrangement, .MarkAttendance, .ViewAbsentees, .AddWastage, .ReviewWastage]
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
 
@@ -17,10 +18,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.leftBarButtonItem = editButtonItem
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+        //navigationItem.leftBarButtonItem = editButtonItem
+        insertNewObject()
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -28,7 +27,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        //clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 
@@ -37,11 +36,15 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @objc
-    func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
+     @objc
+    func insertNewObject() {
+        let length = functions.count - 1
+        for i in 0...length {
+        let tab = functions[i]
+        objects.insert(tab.rawValue, at: i)
+        let indexPath = IndexPath(row: i, section: i)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
 
     // MARK: - Segues
@@ -49,11 +52,15 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let object = objects[indexPath.row] as! String
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: object) as UIViewController
+                present(vc, animated:true, completion: nil)
+                /*let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.detailLabel.title = object
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                controller.navigationItem.leftItemsSupplementBackButton = true */
             }
         }
     }
@@ -71,14 +78,14 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
+        let object = objects[indexPath.row] as! String
         cell.textLabel!.text = object.description
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
