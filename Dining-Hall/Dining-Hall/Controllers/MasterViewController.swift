@@ -10,7 +10,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    let functions: [Function] = [.AddArrangement, .MarkAttendance, .ViewAbsentees, .AddWastage, .ReviewWastage]
+    let functions = Function.all()
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
 

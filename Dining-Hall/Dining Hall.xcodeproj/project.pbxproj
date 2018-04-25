@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
+		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
+		898849DA208A281400ED5489 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898849D9208A281400ED5489 /* Student.swift */; };
 		898ED1332041956800AB8726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1322041956800AB8726 /* AppDelegate.swift */; };
 		898ED1352041956800AB8726 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1342041956800AB8726 /* MasterViewController.swift */; };
 		898ED1372041956800AB8726 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1362041956800AB8726 /* DetailViewController.swift */; };
@@ -42,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		895DE4DC208543F1004519D9 /* ArrangementsDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArrangementsDB.sqlite; sourceTree = "<group>"; };
+		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
+		8969117120853D00000EC783 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		8969117320853D2B000EC783 /* DBManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManagerViewController.swift; sourceTree = "<group>"; };
+		898849D9208A281400ED5489 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		898ED12F2041956800AB8726 /* Dining Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dining Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898ED1322041956800AB8726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898ED1342041956800AB8726 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,13 +100,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8969117020853D00000EC783 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				895DE4DD20854999004519D9 /* libsqlite3.tbd */,
+				8969117120853D00000EC783 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8969117520853FD5000EC783 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				898ED1342041956800AB8726 /* MasterViewController.swift */,
+				89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */,
+				89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */,
+				8969117320853D2B000EC783 /* DBManagerViewController.swift */,
+				89EF139820586701004A0018 /* ReviewWastageViewController.swift */,
+				89EF1396205866EB004A0018 /* AddWastageViewController.swift */,
+				89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */,
+				898ED1362041956800AB8726 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		896911762085402A000EC783 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				895DE4DC208543F1004519D9 /* ArrangementsDB.sqlite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		898ED1262041956800AB8726 = {
 			isa = PBXGroup;
 			children = (
-				898ED1312041956800AB8726 /* Dining Hall */,
+				898ED1312041956800AB8726 /* Dining-Hall */,
 				898ED1482041956800AB8726 /* Dining HallTests */,
 				898ED1532041956800AB8726 /* Dining HallUITests */,
 				898ED1302041956800AB8726 /* Products */,
+				8969117020853D00000EC783 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,25 +153,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		898ED1312041956800AB8726 /* Dining Hall */ = {
+		898ED1312041956800AB8726 /* Dining-Hall */ = {
 			isa = PBXGroup;
 			children = (
+				896911762085402A000EC783 /* Database */,
+				8969117520853FD5000EC783 /* Controllers */,
 				89EF139A20586AB1004A0018 /* LaunchImage */,
 				898ED1322041956800AB8726 /* AppDelegate.swift */,
-				898ED1362041956800AB8726 /* DetailViewController.swift */,
-				898ED1342041956800AB8726 /* MasterViewController.swift */,
 				898ED1382041956800AB8726 /* Main.storyboard */,
 				898ED13B2041956800AB8726 /* Assets.xcassets */,
 				898ED13D2041956800AB8726 /* LaunchScreen.storyboard */,
 				898ED1402041956800AB8726 /* Info.plist */,
-				89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */,
 				89CF712A2057F645005B7D43 /* Function.swift */,
-				89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */,
-				89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */,
-				89EF1396205866EB004A0018 /* AddWastageViewController.swift */,
-				89EF139820586701004A0018 /* ReviewWastageViewController.swift */,
+				895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */,
+				898849D9208A281400ED5489 /* Student.swift */,
 			);
-			path = "Dining Hall";
+			path = "Dining-Hall";
 			sourceTree = "<group>";
 		};
 		898ED1482041956800AB8726 /* Dining HallTests */ = {
@@ -226,6 +266,11 @@
 					898ED12E2041956800AB8726 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					898ED1442041956800AB8726 = {
 						CreatedOnToolsVersion = 9.2;
@@ -295,8 +340,10 @@
 				89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */,
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
 				89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */,
+				898849DA208A281400ED5489 /* Student.swift in Sources */,
 				89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */,
 				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
+				8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */,
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
 				89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */,
 				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
@@ -403,12 +450,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -454,10 +502,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -469,11 +518,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
-				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dining-Hall/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dining-Hall/Dining Hall Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -486,11 +536,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
-				INFOPLIST_FILE = "Dining Hall/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dining-Hall/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.femilamptey.Dining-Hall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dining-Hall/Dining Hall Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

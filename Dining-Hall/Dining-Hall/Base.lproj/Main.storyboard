@@ -130,6 +130,9 @@
                                 <rect key="frame" x="108" y="252" width="553" height="78"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <state key="normal" title="Add Arrangements"/>
+                                <connections>
+                                    <action selector="addArrangements:" destination="lDW-HG-0Eo" eventType="touchDown" id="zxY-Nk-hnx"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button below to add names and arrangements to the application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6D-23-3Z9">
                                 <rect key="frame" x="79" y="116" width="610" height="72"/>
@@ -170,6 +173,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tcw-J0-NPe"/>
                     </view>
+                    <connections>
+                        <outlet property="addArrangementBtn" destination="H17-HZ-bE1" id="jMJ-3e-0tI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ry3-q7-Mak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,6 +280,57 @@
             </objects>
             <point key="canvasLocation" x="1638" y="1678"/>
         </scene>
+        <!--Manager View Controller-->
+        <scene sceneID="8y3-KB-0zm">
+            <objects>
+                <viewController storyboardIdentifier="Database Manager" id="We0-Oh-V3O" customClass="DBManagerViewController" customModule="Dining_Hall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xHP-fw-lsz">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oba-2h-JVM">
+                                <rect key="frame" x="0.0" y="208" width="768" height="816"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="058-be-aYh">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="E0B-42-GRz">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-bE-Aug">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Database Manager" id="5kZ-ut-C9L">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="pgE-6R-L6U">
+                                            <connections>
+                                                <segue destination="RMx-3f-FxP" kind="showDetail" id="Lsa-ib-3ku"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tz0-Lm-Smx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFD-rz-qqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.625" y="-2082.421875"/>
+        </scene>
         <!--Mark Attendance View Controller-->
         <scene sceneID="eah-43-Id7">
             <objects>
@@ -310,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7e2-Oh-J15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="-1363"/>
+            <point key="canvasLocation" x="1638" y="-1317"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -331,6 +388,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
-        <segue reference="6iG-aw-TCa"/>
+        <segue reference="VPd-U3-xsm"/>
     </inferredMetricsTieBreakers>
 </document>
