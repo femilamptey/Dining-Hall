@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890CB8A620AC2FD3009C207E /* DatabaseManager.swift */; };
 		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
 		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
 		898849DA208A281400ED5489 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898849D9208A281400ED5489 /* Student.swift */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		890CB8A620AC2FD3009C207E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		890CB8A820AC47F3009C207E /* Dining Hall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining Hall.entitlements"; sourceTree = "<group>"; };
 		895DE4DC208543F1004519D9 /* ArrangementsDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArrangementsDB.sqlite; sourceTree = "<group>"; };
 		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		898ED1262041956800AB8726 = {
 			isa = PBXGroup;
 			children = (
+				890CB8A820AC47F3009C207E /* Dining Hall.entitlements */,
 				898ED1312041956800AB8726 /* Dining-Hall */,
 				898ED1482041956800AB8726 /* Dining HallTests */,
 				898ED1532041956800AB8726 /* Dining HallUITests */,
@@ -167,6 +171,7 @@
 				89CF712A2057F645005B7D43 /* Function.swift */,
 				895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */,
 				898849D9208A281400ED5489 /* Student.swift */,
+				890CB8A620AC2FD3009C207E /* DatabaseManager.swift */,
 			);
 			path = "Dining-Hall";
 			sourceTree = "<group>";
@@ -268,7 +273,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -345,6 +350,7 @@
 				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
 				8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */,
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
+				890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */,
 				89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */,
 				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
 				89CF712B2057F645005B7D43 /* Function.swift in Sources */,
@@ -516,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Dining Hall.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
 				INFOPLIST_FILE = "$(SRCROOT)/Dining-Hall/Info.plist";
@@ -534,6 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Dining Hall.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ARTFJJ5GB9;
 				INFOPLIST_FILE = "$(SRCROOT)/Dining-Hall/Info.plist";
