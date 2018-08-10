@@ -48,7 +48,6 @@
 /* Begin PBXFileReference section */
 		890CB8A620AC2FD3009C207E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		890CB8A820AC47F3009C207E /* Dining Hall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining Hall.entitlements"; sourceTree = "<group>"; };
-		895DE4DC208543F1004519D9 /* ArrangementsDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArrangementsDB.sqlite; sourceTree = "<group>"; };
 		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
 		8969117120853D00000EC783 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -127,14 +126,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		896911762085402A000EC783 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				895DE4DC208543F1004519D9 /* ArrangementsDB.sqlite */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		898ED1262041956800AB8726 = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +151,6 @@
 		898ED1312041956800AB8726 /* Dining-Hall */ = {
 			isa = PBXGroup;
 			children = (
-				896911762085402A000EC783 /* Database */,
 				8969117520853FD5000EC783 /* Controllers */,
 				89EF139A20586AB1004A0018 /* LaunchImage */,
 				898ED1322041956800AB8726 /* AppDelegate.swift */,
@@ -265,7 +255,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Femi Lamptey";
 				TargetAttributes = {
 					898ED12E2041956800AB8726 = {
@@ -422,6 +412,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -429,6 +420,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -480,6 +472,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -487,6 +480,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

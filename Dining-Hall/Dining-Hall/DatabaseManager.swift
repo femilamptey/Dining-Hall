@@ -10,28 +10,36 @@ import Foundation
 import SQLite3
 
 class DataBaseManager {
-    var db: OpaquePointer?
-    let createTableQuery:  String
-    let fileURL: URL
+    static var db: OpaquePointer? = nil
+    static let createArrangementTableQuery:  String = "CREATE TABLE IF NOT EXISTS Arrangement (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, lastName TEXT, middleName TEXT, firstName TEXT, table TEXT)"
+    static let createAbsenteeTableQuery:  String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, lastName TEXT, middleName TEXT, firstName TEXT, absentCount INTEGER)"
+    static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
     
-    init() {
-        createTableQuery = "CREATE TABLE IF NOT EXISTS Arrangement (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, lastName TEXT, middleName TEXT, firstName TEXT, absentCount INTEGER)"
-        fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
+    private init() {
+        //Static class, no need for initializer
     }
     
-    func openDatabase() {
+    static func openDatabase() {
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("Did not open")
+        } else {
+            print("Database opened")
         }
     }
     
-    func createTable() {
-        if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK {
+    static func createArrangementTable() {
+        if sqlite3_exec(db, createArrangementTableQuery, nil, nil, nil) != SQLITE_OK {
             print("Did not create")
         }
     }
     
-    func bindToStatement(statement: OpaquePointer?, lastName: String, middleName: String?, firstName: String, absentCount: Int, bindingPosition: Int32) -> OpaquePointer? {
+    static func createAbsenteeTable() {
+        if sqlite3_exec(db, createAbsenteeTableQuery, nil, nil, nil) != SQLITE_OK {
+            print("Did not create")
+        }
+    }
+    
+    static func bindToArrangementStatement(statement: OpaquePointer?, lastName: String, middleName: String?, firstName: String, table: String, bindingPosition: Int32) -> OpaquePointer? {
         
         if sqlite3_bind_text(statement, bindingPosition, lastName, -1, nil) != SQLITE_OK {
             print("Error binding last name")
@@ -41,22 +49,22 @@ class DataBaseManager {
             print("Error binding first name")
         }
         
-        if sqlite3_bind_int(statement, bindingPosition, Int32(absentCount)) != SQLITE_OK {
+        if sqlite3_bind_text(statement, bindingPosition, table, -1, nil) != SQLITE_OK {
             print("Error binding absent count")
         }
         
         return statement
     }
     
-    func addValue(lastName: String, middleName: String?, firstName: String, absentCount: Int, bindingPosition: Int32) {
+    static func addValue(lastName: String, middleName: String?, firstName: String, table: String, bindingPosition: Int32) {
         var statement: OpaquePointer?
-        let query = "INSERT INTO Arrangement (lastName, firstName, absentCount), VALUES (?, ?, ?)"
+        let ArragementQuery = "INSERT INTO Arrangement (lastName, firstName, table), VALUES (?, ?, ?)"
         
-        if sqlite3_prepare(db, query, -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare(db, ArragementQuery, -1, &statement, nil) != SQLITE_OK {
             print("Error preparing statement")
         }
         
-        statement = bindToStatement(statement: statement, lastName: lastName, middleName: middleName, firstName: firstName, absentCount: absentCount, bindingPosition: bindingPosition)
+        statement = bindToArrangementStatement(statement: statement, lastName: lastName, middleName: middleName, firstName: firstName, table: table, bindingPosition: bindingPosition)
         
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Student saved succesfully")

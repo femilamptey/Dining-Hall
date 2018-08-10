@@ -11,12 +11,9 @@ import SQLite3
 
 class DBManagerViewController: UIViewController {
     
-    var dbManager: DataBaseManager = DataBaseManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dbManager.openDatabase()
-        dbManager.createTable()
+        
     }
 
 }
