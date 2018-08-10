@@ -8,27 +8,33 @@
 
 import Foundation
 
-class Student {
-    let studentNo: Int
-    let firstName: String
-    let middleName: String?
-    let lastName: String
-    let fullName: String
-    var absentCount: Int
-    var datesLate: [Date]
+class DatabaseStudent {
+    private let studentNo: Int
+    private let fullName: String
+    private let seatingArrangement: String
+    private var absentCount: Int
+    private var datesLate: [String]
     
-    init(_ studentNo: Int, firstName: String, middleName: String?, lastName: String, absentCount: Int, datesLate: [Date]) {
+    init(_ studentNo: Int, fullName: String, seatingArrangement: String,absentCount: Int, datesLate: [String]) {
         self.studentNo = studentNo
-        self.firstName = firstName
-        self.middleName = middleName
-        self.lastName = lastName
-        if self.middleName != nil {
-            self.fullName = "\(self.lastName) \(self.firstName) \(self.middleName ?? "")"
-        } else {
-            self.fullName = "\(self.lastName) \(self.firstName)"
-        }
+        self.fullName = fullName
+        self.seatingArrangement = seatingArrangement
         self.absentCount = absentCount
         self.datesLate = datesLate
     }
+    
+}
+
+class ImportedStudent {
+    private let fullName: String
+    private let seatingArrangement: String
+    
+    init(fullName: String, seatingArrangement: String) {
+        self.fullName = fullName
+        self.seatingArrangement = seatingArrangement
+    }
+    
+    public func getFullName() -> String { return self.fullName }
+    public func getSeatingArrangement() -> String { return self.seatingArrangement }
     
 }
