@@ -146,7 +146,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button below to add names and arrangements to the application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6D-23-3Z9">
-                                <rect key="frame" x="79" y="116" width="610" height="71.5"/>
+                                <rect key="frame" x="20" y="116" width="728" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -171,8 +171,8 @@
                         <constraints>
                             <constraint firstItem="R6D-23-3Z9" firstAttribute="top" secondItem="jMY-8Y-a3l" secondAttribute="bottom" constant="52" id="10s-ie-Yaf"/>
                             <constraint firstItem="tcw-J0-NPe" firstAttribute="trailing" secondItem="H17-HZ-bE1" secondAttribute="trailing" constant="107" id="BCn-Pa-fvL"/>
-                            <constraint firstItem="R6D-23-3Z9" firstAttribute="leading" secondItem="tcw-J0-NPe" secondAttribute="leading" constant="79" id="HWo-Ds-vcH"/>
-                            <constraint firstItem="tcw-J0-NPe" firstAttribute="trailing" secondItem="R6D-23-3Z9" secondAttribute="trailing" constant="79" id="NnD-tA-sl7"/>
+                            <constraint firstItem="R6D-23-3Z9" firstAttribute="leading" secondItem="tcw-J0-NPe" secondAttribute="leading" constant="20" id="HWo-Ds-vcH"/>
+                            <constraint firstItem="tcw-J0-NPe" firstAttribute="trailing" secondItem="R6D-23-3Z9" secondAttribute="trailing" constant="20" id="NnD-tA-sl7"/>
                             <constraint firstItem="tcw-J0-NPe" firstAttribute="bottom" secondItem="H17-HZ-bE1" secondAttribute="bottom" constant="694" id="OLd-Ub-1Nu"/>
                             <constraint firstItem="H17-HZ-bE1" firstAttribute="leading" secondItem="tcw-J0-NPe" secondAttribute="leading" constant="108" id="QWZ-hX-faF"/>
                             <constraint firstItem="H17-HZ-bE1" firstAttribute="top" secondItem="R6D-23-3Z9" secondAttribute="bottom" constant="64" id="Vf5-F6-u1v"/>
@@ -518,6 +518,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
-        <segue reference="3Uz-NA-krB"/>
+        <segue reference="5Dz-OE-gTP"/>
     </inferredMetricsTieBreakers>
 </document>

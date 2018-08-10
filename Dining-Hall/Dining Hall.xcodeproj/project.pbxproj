@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890CB8A620AC2FD3009C207E /* DatabaseManager.swift */; };
+		892740A4211E1180000A1AE2 /* CSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892740A3211E1180000A1AE2 /* CSVImporter.swift */; };
 		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
 		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
 		898849DA208A281400ED5489 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898849D9208A281400ED5489 /* Student.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		890CB8A620AC2FD3009C207E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		890CB8A820AC47F3009C207E /* Dining Hall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining Hall.entitlements"; sourceTree = "<group>"; };
+		892740A3211E1180000A1AE2 /* CSVImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImporter.swift; sourceTree = "<group>"; };
 		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
 		8969117120853D00000EC783 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -162,6 +164,7 @@
 				895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */,
 				898849D9208A281400ED5489 /* Student.swift */,
 				890CB8A620AC2FD3009C207E /* DatabaseManager.swift */,
+				892740A3211E1180000A1AE2 /* CSVImporter.swift */,
 			);
 			path = "Dining-Hall";
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			files = (
 				89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */,
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
+				892740A4211E1180000A1AE2 /* CSVImporter.swift in Sources */,
 				89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */,
 				898849DA208A281400ED5489 /* Student.swift in Sources */,
 				89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */,
