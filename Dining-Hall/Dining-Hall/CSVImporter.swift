@@ -9,36 +9,46 @@
 import Foundation
 
 class CSVImporter {
+    
     private init() { /* Static class, no need for initializer */ }
     
     private static func process(contents: String) throws -> [ImportedStudent] {
         var importedStudents: [ImportedStudent] = []
-        var seatingArrangement: String
+        let tableLength: Int
+        let tableColumns: [String]
         
-        let rows = contents.split(separator: "\n")
-        let columns = rows.split(separator: ",", maxSplits: 99, omittingEmptySubsequences: false)
+        var rows = contents.components(separatedBy: "\n")
+        var tableNums: [String] = []
         
-        for var column in columns {
-            let c: String = String(column.remove(at: column.index(after: column.startIndex)))
-            let colNum = column.count
-            
-            for var row in rows {
-                let rowNum: String = String(row.popFirst()!)
-                
-                var names: [String] = row.description.components(separatedBy: CharacterSet.init(charactersIn: " ,"))
-                
-                seatingArrangement = c + rowNum
-                importedStudents.append(ImportedStudent(fullName: names[colNum], seatingArrangement: seatingArrangement))
+        rows[0].removeFirst(1)
+        tableColumns = rows[0].components(separatedBy: ",")
+        tableLength = tableColumns.count
+        
+        for row in rows {
+            if row != rows[0] {
+                let tableNum = row.components(separatedBy: ",")
+                tableNums.append(tableNum[0])
             }
-            
         }
         
+        for row in rows {
+            var c = 0
+            if row != rows[0] && row != "" {
+                    let names = row.components(separatedBy: ",")
+                        for i in 1...tableLength {
+                            print(names[i], tableColumns[c] + String(i))
+                            importedStudents.append(ImportedStudent(fullName: names[i], seatingArrangement: tableColumns[c] + String(i)))
+                            c += 1
+                            }
+                    }
+            }
         return importedStudents
-    }
+        }
     
     public static func processFile(path: URL) throws -> [ImportedStudent] {
         let contents =  try String.init(contentsOf: path); do {}
         return try process(contents: contents)
     }
-    
+
 }
+
