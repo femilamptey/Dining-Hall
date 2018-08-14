@@ -12,16 +12,16 @@ class DatabaseStudent {
     private let studentNo: Int
     private let fullName: String
     private let seatingArrangement: String
-    private var absentCount: Int
-    private var datesLate: [String]
     
-    init(_ studentNo: Int, fullName: String, seatingArrangement: String,absentCount: Int, datesLate: [String]) {
+    init(studentNo: Int, fullName: String, seatingArrangement: String) {
         self.studentNo = studentNo
         self.fullName = fullName
         self.seatingArrangement = seatingArrangement
-        self.absentCount = absentCount
-        self.datesLate = datesLate
     }
+    
+}
+
+class AbsenteeStudent {
     
 }
 
