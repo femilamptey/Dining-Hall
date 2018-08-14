@@ -401,6 +401,16 @@
                                                 <segue destination="H1p-Uh-vWS" kind="show" id="f2b-iB-WRd"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="1IX-LN-18e">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rwt-8E-H2w">
+                                                <rect key="frame" x="578" y="7" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Reset Database"/>
+                                                <connections>
+                                                    <action selector="resetDB:" destination="We0-Oh-V3O" eventType="touchDown" id="RoK-sX-2Hr"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -408,6 +418,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tz0-Lm-Smx"/>
                     </view>
+                    <connections>
+                        <outlet property="resetDBBtn" destination="rwt-8E-H2w" id="Uoq-nQ-0OT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFD-rz-qqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

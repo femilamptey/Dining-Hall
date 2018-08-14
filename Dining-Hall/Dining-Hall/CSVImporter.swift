@@ -30,17 +30,26 @@ class CSVImporter {
                 tableNums.append(tableNum[0])
             }
         }
+        var c = 0
         
         for row in rows {
-            var c = 0
             if row != rows[0] && row != "" {
-                    let names = row.components(separatedBy: ",")
-                        for i in 1...tableLength {
-                            print(names[i], tableColumns[c] + String(i))
-                            importedStudents.append(ImportedStudent(fullName: names[i], seatingArrangement: tableColumns[c] + String(i)))
-                            c += 1
-                            }
+                let names = row.components(separatedBy: ",")
+                for i in 1...tableLength {
+                    let trimmedName = names[i].components(separatedBy: NSCharacterSet.newlines).joined(separator: " ")
+                    
+                    let trimmedTableName = tableColumns[c].components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined()
+                    
+                    print(trimmedName, trimmedTableName + String(i))
+                    
+                    let student = ImportedStudent(fullName: trimmedName, seatingArrangement: trimmedTableName+String(i))
+                    
+                    importedStudents.append(student)
+                    
+                    print(trimmedName)
                     }
+                c += 1
+                }
             }
         return importedStudents
         }

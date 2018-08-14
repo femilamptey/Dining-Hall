@@ -11,13 +11,14 @@ import SQLite3
 
 class DataBaseManager {
     static var db: OpaquePointer? = nil
-    static let createArrangementTableQuery:  String = "CREATE TABLE IF NOT EXISTS Arrangement (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, fullName TEXT, table TEXT)"
-    static let createAbsenteeTableQuery:  String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, fullName TEXT, absentCount INTEGER, absentDates TEXT)"
+    static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
+    static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
     static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
-    static let ArragementQuery = "INSERT INTO Arrangement (fullName, table), VALUES (?, ?)"
-    static let AbsenteeQuery = "INSERT INTO Absentees (fullName, table, date), VALUES (?, ?, ?)"
-
-
+    static let ArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
+    static let AbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
+    static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
+    static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
+    static let getAllStudentsQuery = "SELECT * FROM Arrangements"
     
     private init() {
         //Static class, no need for initializer
@@ -32,26 +33,40 @@ class DataBaseManager {
     }
     
     static func createArrangementTable() {
+        
         if sqlite3_exec(db, createArrangementTableQuery, nil, nil, nil) != SQLITE_OK {
-            print("Did not create")
+            print("Did not create Arrangements Table")
         }
+        
     }
     
     static func createAbsenteeTable() {
+        
         if sqlite3_exec(db, createAbsenteeTableQuery, nil, nil, nil) != SQLITE_OK {
             print("Did not create")
+        }
+        
+    }
+    
+    static func clearArrangementDB() {
+        if sqlite3_exec(db, DropArrangementTableQuery, nil, nil, nil) == SQLITE_OK {
+            print("Arrangements table dropped")
+        }
+    }
+    
+    static func clearAbsenteesDB() {
+        if sqlite3_exec(db, DropAbsenteeTableQuery, nil, nil, nil) == SQLITE_OK {
+            print("Arrangements table dropped")
         }
     }
     
     static func bindToArrangementStatement(statement: OpaquePointer?, fullName: String, table: String) -> OpaquePointer? {
         
-        let trimmedTable = table.trimmingCharacters(in: CharacterSet(charactersIn: "\r"))
-        
         if sqlite3_bind_text(statement, 1, fullName, -1, nil) != SQLITE_OK {
             print("Error binding last name")
         }
         
-        if sqlite3_bind_text(statement, 2, trimmedTable, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 2, table, -1, nil) != SQLITE_OK {
             print("Error binding seating position")
         }
         
@@ -75,10 +90,10 @@ class DataBaseManager {
         return statement
     }
     
-    static func addStudentTableLocation(fullName: String, table: String, bindingPosition: Int32) {
+    static func addStudentTableLocation(fullName: String, table: String) {
         var statement: OpaquePointer?
         
-        if sqlite3_prepare(db, ArragementQuery, -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare(db, ArrangementQuery, -1, &statement, nil) != SQLITE_OK {
             print("Error preparing statement")
         }
         
@@ -87,6 +102,7 @@ class DataBaseManager {
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Student saved succesfully")
         }
+        
     }
     
     static func addAbsentee(fullName: String, table: String, date: NSDate, bindingPosition: Int32) {
@@ -101,6 +117,7 @@ class DataBaseManager {
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Student saved succesfully")
         }
+        
     }
     
     static func getAllColumns() {
@@ -108,22 +125,37 @@ class DataBaseManager {
     }
     
     static func getAllStudents() {
+        var statement: OpaquePointer?
+        var studentID: Int
+        var fullName: String
+        var seatingPosition: String
+        
+        if sqlite3_prepare_v2(db, getAllStudentsQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve students")
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            studentID = Int(sqlite3_column_int64(statement, 0))
+            fullName = String.init(cString: sqlite3_column_text(statement, 1))
+            seatingPosition = String.init(cString: sqlite3_column_text(statement, 2))
+            print(studentID)
+            print(fullName)
+            print(seatingPosition)
+        }
         
     }
 
     static func importCSV(path: URL) {
+        
         do {
-            let toStore = try CSVImporter.processFile(path: path)
-            var i: Int32 = 0
-            for student in toStore {
-                addStudentTableLocation(fullName: student.getFullName(), table: student.getSeatingArrangement(), bindingPosition: i)
-                i += 1
+            let students = try CSVImporter.processFile(path: path)
+            for student in students {
+                addStudentTableLocation(fullName: student.getFullName(), table: student.getSeatingArrangement())
             }
         } catch is Error {
             print("Unable to import CSV records")
         }
+        
     }
-    
-    
     
 }
