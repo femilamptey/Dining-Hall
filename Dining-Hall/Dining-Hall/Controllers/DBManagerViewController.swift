@@ -12,8 +12,25 @@ import SQLite3
 class DBManagerViewController: UIViewController {
     
     @IBOutlet weak var resetDBBtn: UIButton!
+    @IBOutlet weak var viewWastageBtn: UIButton!
+    @IBOutlet weak var viewAbsenteesBtn: UIButton!
+    @IBOutlet weak var viewArrangementsBtn: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewArrangementsBtn.backgroundColor = UIColor.green
+        viewArrangementsBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+        viewArrangementsBtn.layer.cornerRadius = 20
+        
+        viewAbsenteesBtn.backgroundColor = UIColor.yellow
+        viewAbsenteesBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+        viewAbsenteesBtn.layer.cornerRadius = 20
+        
+        viewWastageBtn.backgroundColor = UIColor.red
+        viewWastageBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+        viewWastageBtn.layer.cornerRadius = 20
+        
         DataBaseManager.getAllStudents()
     }
 
