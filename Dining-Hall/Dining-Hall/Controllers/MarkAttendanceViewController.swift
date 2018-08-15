@@ -11,4 +11,15 @@ import UIKit
 class MarkAttendanceViewController: UIViewController {
     
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
 }
