@@ -7,26 +7,27 @@
 //
 
 import Foundation
+import UIKit
 import SQLite3
 
 class DataBaseManager {
-    static var db: OpaquePointer? = nil
-    static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
-    static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
-    static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
-    static let createWastageQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (wasteID INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
-    static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
-    static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
-    static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
-    static let AddWastageQuery = "INSERT INTO Wastage (date, breakfasteWaste, lunchWaste, dinnerWaste Integer) VALUES (?, ?, ?, ?)"
-    static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
-    static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
-    static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
-    static let getAllStudentsQuery = "SELECT * FROM Arrangements"
+    private static var db: OpaquePointer? = nil
+    private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
+    private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
+    private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
+    private static let createWastageQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (wasteID INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
+    private static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
+    private static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
+    private static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
+    private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfasteWaste, lunchWaste, dinnerWaste Integer) VALUES (?, ?, ?, ?)"
+    private static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
+    private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
+    private static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
+    private static let getAllStudentsQuery = "SELECT * FROM Arrangements"
+    private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
+    private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
     
-    private init() {
-        //Static class, no need for initializer
-    }
+    private init() { /*Static class, no need for initializer */ }
     
     static func openDatabase() {
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
@@ -60,7 +61,13 @@ class DataBaseManager {
     
     static func clearAbsenteesDB() {
         if sqlite3_exec(db, DropAbsenteeTableQuery, nil, nil, nil) == SQLITE_OK {
-            print("Arrangements table dropped")
+            print("Absentees table dropped")
+        }
+    }
+    
+    static func clearWastageDB() {
+        if sqlite3_exec(db, DropWastageTableQuery, nil, nil, nil) == SQLITE_OK {
+            print("Wastage table dropped")
         }
     }
     
