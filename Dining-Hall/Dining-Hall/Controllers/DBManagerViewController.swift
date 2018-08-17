@@ -31,12 +31,13 @@ class DBManagerViewController: UIViewController {
         viewWastageBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         viewWastageBtn.layer.cornerRadius = 20
         
-        DataBaseManager.getAllStudents()
+        for student in DataBaseManager.getAllStudents() {
+            print(student.getStudentNo(), student.getFullName(), student.getSeatingArrangement())
+        }
     }
 
     @IBAction func resetDB(_ sender: Any) {
-        DataBaseManager.clearArrangementDB()
-        DataBaseManager.clearAbsenteesDB()
+        self.present(DataBaseManager.clearAllDBs(), animated: true, completion: nil)
     }
     
 }

@@ -27,6 +27,7 @@ class MasterViewController: UITableViewController {
         DataBaseManager.openDatabase()
         DataBaseManager.createArrangementTable()
         DataBaseManager.createAbsenteeTable()
+        DataBaseManager.createWastageTable()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,11 +60,11 @@ class MasterViewController: UITableViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: object) as UIViewController
                 present(vc, animated:true, completion: nil)
-                /*let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailLabel.title = object
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true */
+                controller.navigationItem.leftItemsSupplementBackButton = true 
             }
         }
     }

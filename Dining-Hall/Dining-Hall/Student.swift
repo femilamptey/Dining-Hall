@@ -18,6 +18,10 @@ class DatabaseStudent {
         self.fullName = fullName
         self.seatingArrangement = seatingArrangement
     }
+
+    func getStudentNo() -> Int { return self.studentNo }
+    func getFullName() -> String { return self.fullName }
+    func getSeatingArrangement() -> String { return self.seatingArrangement }
     
 }
 

@@ -158,7 +158,7 @@
                                     <navigationItem title="Add Arrangement" id="hfG-Mx-QIQ">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="zdR-dA-edJ">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="5Dz-OE-gTP"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="mvB-zq-4WU"/>
                                             </connections>
                                         </barButtonItem>
                                         <connections>
@@ -208,7 +208,7 @@
                                     <navigationItem title="View Absentees" id="ALc-ur-4Ve">
                                         <barButtonItem key="leftBarButtonItem" title="Done" id="j1e-1r-LIc">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="Stg-Hd-Opl"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="1jn-Jd-oXc"/>
                                             </connections>
                                         </barButtonItem>
                                         <connections>
@@ -240,7 +240,7 @@
                                     <navigationItem title="Add Wastage" id="VaF-dz-D18">
                                         <barButtonItem key="leftBarButtonItem" title="Exit without saving" id="slh-wQ-eJO">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="3Uz-NA-krB"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="FiO-gA-Vdc"/>
                                             </connections>
                                         </barButtonItem>
                                         <connections>
@@ -366,7 +366,7 @@
                                     <navigationItem title="Review Wastage" id="0vU-OM-iPV">
                                         <barButtonItem key="leftBarButtonItem" title="Done" id="f1J-j7-5Dq">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="oWd-iP-SWY"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="mAC-HW-YMv"/>
                                             </connections>
                                         </barButtonItem>
                                         <connections>
@@ -398,7 +398,7 @@
                                     <navigationItem title="Database Manager" id="5kZ-ut-C9L">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="pgE-6R-L6U">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="f2b-iB-WRd"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="Wpb-cM-rsh"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="1IX-LN-18e">
@@ -477,7 +477,18 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iM-pb-jTV">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <items>
-                                    <navigationItem title="Student Seating Arrangements" id="4GH-Ti-m1y"/>
+                                    <navigationItem title="Student Seating Arrangements" id="4GH-Ti-m1y">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="jRb-7O-Uhr">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T9l-SR-OE7">
+                                                <rect key="frame" x="20" y="7" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <segue destination="We0-Oh-V3O" kind="show" id="O1l-Db-6Do"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -508,7 +519,7 @@
                                     <navigationItem title="Mark Attendance" id="AEI-wO-uKC">
                                         <barButtonItem key="leftBarButtonItem" title="Done" id="q0D-Mb-fnY">
                                             <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="mxU-FT-5El"/>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="eRw-cn-mZv"/>
                                             </connections>
                                         </barButtonItem>
                                         <connections>
@@ -592,7 +603,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="O1l-Db-6Do"/>
         <segue reference="6S0-TO-JiA"/>
-        <segue reference="f2b-iB-WRd"/>
+        <segue reference="Wpb-cM-rsh"/>
     </inferredMetricsTieBreakers>
 </document>
