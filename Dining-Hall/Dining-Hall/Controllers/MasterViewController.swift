@@ -25,6 +25,7 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         DataBaseManager.openDatabase()
+        DataBaseManager.createColumnsTable()
         DataBaseManager.createArrangementTable()
         DataBaseManager.createAbsenteeTable()
         DataBaseManager.createWastageTable()
@@ -64,7 +65,7 @@ class MasterViewController: UITableViewController {
                 controller.detailLabel.title = object
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true 
+                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }

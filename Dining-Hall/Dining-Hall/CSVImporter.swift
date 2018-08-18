@@ -22,6 +22,11 @@ class CSVImporter {
         
         rows[0].removeFirst(1)
         tableColumns = rows[0].components(separatedBy: ",")
+        
+        for tableColumn in tableColumns {
+            DataBaseManager.addColumn(column: tableColumn.components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined() + " Column")
+        }
+        
         tableLength = tableColumns.count
         
         for row in rows {

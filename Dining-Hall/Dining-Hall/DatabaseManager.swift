@@ -13,21 +13,25 @@ import SQLite3
 class DataBaseManager {
     private static var db: OpaquePointer? = nil
     private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
+    private static let createColumnTableQuery: String = "CREATE TABLE IF NOT EXISTS Columns (columnNumber INTEGER PRIMARY KEY AUTOINCREMENT, column TEXT)"
     private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
     private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
     private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (wasteID INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
     private static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
+    private static let AddColumnsQuery = "INSERT INTO Columns (column) VALUES (?)"
     private static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
     private static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
     private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfasteWaste, lunchWaste, dinnerWaste Integer) VALUES (?, ?, ?, ?)"
+    private static let DropColumnsTableQuery = "DROP TABLE IF EXISTS Columns"
     private static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
     private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
     private static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
+    private static let getAllColumnsQuery = "SELECT column from Columns"
     private static let getAllStudentsAllocationsQuery = "SELECT * FROM Arrangements"
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
     
-    private init() { /*Static class, no need for initializer */ }
+    private init() { /* Static class, no need for initializer */ }
     
     static func openDatabase() {
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
@@ -35,6 +39,14 @@ class DataBaseManager {
         } else {
             print("Database opened")
         }
+    }
+    
+    static func createColumnsTable() {
+        
+        if sqlite3_exec(db, createColumnTableQuery, nil, nil, nil) != SQLITE_OK {
+            print("Did not create Columns table")
+        }
+        
     }
     
     static func createArrangementTable() {
@@ -62,14 +74,21 @@ class DataBaseManager {
     }
     
     static func clearAllDBs() -> UIAlertController {
-        if sqlite3_exec(db, DropArrangementTableQuery, nil, nil, nil) != SQLITE_OK || sqlite3_exec(db, DropAbsenteeTableQuery, nil, nil, nil) != SQLITE_OK || sqlite3_exec(db, DropWastageTableQuery, nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, DropArrangementTableQuery, nil, nil, nil) != SQLITE_OK ||
+            sqlite3_exec(db, DropAbsenteeTableQuery, nil, nil, nil) != SQLITE_OK ||
+            sqlite3_exec(db, DropWastageTableQuery, nil, nil, nil) != SQLITE_OK ||
+            sqlite3_exec(db, DropColumnsTableQuery, nil, nil, nil) != SQLITE_OK {
+            
             alertController = UIAlertController(title: "Error", message: "Could not clear all tables. Try again", preferredStyle: .alert)
             alertController.addAction(action)
             return alertController
+            
         } else {
+            
             alertController = UIAlertController(title: "Successful", message: "All tables cleared", preferredStyle: .alert)
             alertController.addAction(action)
             return alertController
+            
         }
     }
     
@@ -109,6 +128,15 @@ class DataBaseManager {
         }
     }
     
+    private static func bindToColumnStatement(statement: OpaquePointer?, column: String) -> OpaquePointer? {
+        
+        if sqlite3_bind_text(statement, 1, column, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding column")
+        }
+        
+        return statement
+    }
+    
     private static func bindToArrangementStatement(statement: OpaquePointer?, fullName: String, table: String) -> OpaquePointer? {
         
         if sqlite3_bind_text(statement, 1, fullName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
@@ -137,6 +165,20 @@ class DataBaseManager {
         }
         
         return statement
+    }
+    
+    static func addColumn(column: String) {
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare(db, AddColumnsQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Error preparing statement.")
+        }
+        
+        statement = bindToColumnStatement(statement: statement, column: column)
+        
+        if sqlite3_step(statement) == SQLITE_DONE {
+            print("Column saved sucessfully")
+        }
     }
     
     private static func addStudentTableLocation(fullName: String, table: String) {
@@ -169,8 +211,22 @@ class DataBaseManager {
         
     }
     
-    static func getAllColumns() {
+    static func getAllColumns() -> [String] {
+        var columns: [String] = []
+        var statement: OpaquePointer?
+        var column: String
         
+        if sqlite3_prepare_v2(db, getAllColumnsQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve students")
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            column = String.init(cString: sqlite3_column_text(statement, 0))
+            columns.append(column)
+            print(column)
+        }
+        
+        return columns
     }
     
     static func getAllStudents() -> [DatabaseStudent] {
@@ -194,7 +250,7 @@ class DataBaseManager {
         return databaseStudents
     }
 
-    static func importCSV(path: URL) {
+    static func importCSV(path: URL) -> UIAlertController {
         
         do {
             let students = try CSVImporter.processFile(path: path)
@@ -203,8 +259,12 @@ class DataBaseManager {
             }
         } catch is Error {
             print("Unable to import CSV records")
+            alertController = UIAlertController(title: "Error", message: "Not all students saved successfully", preferredStyle: .alert)
         }
         
+        alertController = UIAlertController(title: "Done", message: "All students saved successfully", preferredStyle: .alert)
+        alertController.addAction(action)
+        return alertController
     }
     
 }

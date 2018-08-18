@@ -24,7 +24,7 @@ class AddArangementViewController: UIViewController, UIDocumentPickerDelegate {
         if CFURLStartAccessingSecurityScopedResource(url as CFURL) {
             print("You gat access yo")
             CFURLStopAccessingSecurityScopedResource(url as CFURL)
-            DataBaseManager.importCSV(path: url)
+            self.present(DataBaseManager.importCSV(path: url), animated: true, completion: nil)
         } else {
             print("You dont gat access")
         }
