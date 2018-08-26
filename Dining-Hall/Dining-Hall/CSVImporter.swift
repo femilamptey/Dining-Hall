@@ -24,7 +24,7 @@ class CSVImporter {
         tableColumns = rows[0].components(separatedBy: ",")
         
         for tableColumn in tableColumns {
-            DataBaseManager.addColumn(column: tableColumn.components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined() + " Column")
+            DatabaseManager.addColumn(column: tableColumn.components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined() + " Column")
         }
         
         tableLength = tableColumns.count

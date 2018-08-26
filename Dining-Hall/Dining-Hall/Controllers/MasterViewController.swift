@@ -24,11 +24,11 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
-        DataBaseManager.openDatabase()
-        DataBaseManager.createColumnsTable()
-        DataBaseManager.createArrangementTable()
-        DataBaseManager.createAbsenteeTable()
-        DataBaseManager.createWastageTable()
+        DatabaseManager.openDatabase()
+        DatabaseManager.createColumnsTable()
+        DatabaseManager.createArrangementTable()
+        DatabaseManager.createAbsenteeTable()
+        DatabaseManager.createWastageTable()
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 import SQLite3
 
-class DataBaseManager {
+class DatabaseManager {
     private static var db: OpaquePointer? = nil
     private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
     private static let createColumnTableQuery: String = "CREATE TABLE IF NOT EXISTS Columns (columnNumber INTEGER PRIMARY KEY AUTOINCREMENT, column TEXT)"
     private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
     private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
-    private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (wasteID INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
+    private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (date TEXT PRIMARY KEY, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
     private static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
     private static let AddColumnsQuery = "INSERT INTO Columns (column) VALUES (?)"
     private static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
     private static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
-    private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfasteWaste, lunchWaste, dinnerWaste Integer) VALUES (?, ?, ?, ?)"
+    private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfastWaste, lunchWaste, dinnerWaste) VALUES (?, ?, ?, ?)"
     private static let DropColumnsTableQuery = "DROP TABLE IF EXISTS Columns"
     private static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
     private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
@@ -167,6 +167,26 @@ class DataBaseManager {
         return statement
     }
     
+    private static func bindToAddWastageStatement(statement: OpaquePointer?, date: String, breakfastWastage: Int, lunchWastage: Int, dinnerWastage: Int) -> OpaquePointer? {
+        
+        if sqlite3_bind_text(statement, 1, date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding date")
+        }
+        
+        if sqlite3_bind_int(statement, 2, Int32(breakfastWastage)) != SQLITE_OK {
+            print("Error binding breakfaste wastage")
+        }
+        
+        if sqlite3_bind_int(statement, 3, Int32(lunchWastage)) != SQLITE_OK {
+            print("Error binding lunch wastage")
+        }
+        
+        if sqlite3_bind_int(statement, 4, Int32(dinnerWastage)) != SQLITE_OK {
+            print("Error binding dinner watage")
+        }
+        return statement
+    }
+    
     static func addColumn(column: String) {
         var statement: OpaquePointer?
         
@@ -196,7 +216,7 @@ class DataBaseManager {
         
     }
     
-    private static func addAbsentee(fullName: String, table: String, date: NSDate, bindingPosition: Int32) {
+    static func addAbsentee(fullName: String, table: String, date: NSDate) {
         var statement: OpaquePointer?
         
         if sqlite3_prepare(db, AddAbsenteeQuery, -1, &statement, nil) != SQLITE_OK {
@@ -211,6 +231,26 @@ class DataBaseManager {
         
     }
     
+    static func addWastage(date: String, breakfastWaste: Int, lunchWaste: Int, dinnerWaste: Int) -> UIAlertController {
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare(db, AddWastageQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Error preparing statement")
+            alertController = UIAlertController(title: "Error", message: "Could not record wastage for today.", preferredStyle: .alert)
+            alertController.addAction(action)
+            return alertController
+        }
+        
+        statement = bindToAddWastageStatement(statement: statement, date: date, breakfastWastage: breakfastWaste, lunchWastage: lunchWaste, dinnerWastage: dinnerWaste)
+        
+        if sqlite3_step(statement) == SQLITE_DONE {
+            print("Wastage saved succesfully")
+            alertController = UIAlertController(title: "Done", message: "Today's wastage recorded succesfully. \n \(date.description.components(separatedBy: " ")[0]), \(breakfastWaste), \(lunchWaste), \(dinnerWaste)", preferredStyle: .alert)
+            alertController.addAction(action)
+        }
+        
+        return alertController
+    }
     static func getAllColumns() -> [String] {
         var columns: [String] = []
         var statement: OpaquePointer?

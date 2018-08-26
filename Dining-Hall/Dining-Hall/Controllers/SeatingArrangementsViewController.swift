@@ -15,7 +15,7 @@ class SeatingArrangementsViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var columnsTableView: UITableView!
     @IBOutlet weak var namesTableView: UITableView!
     
-    private var columns: [String] = DataBaseManager.getAllColumns()
+    private var columns: [String] = DatabaseManager.getAllColumns()
     // private var students: [DatabaseStudent]
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class SeatingArrangementsViewController: UIViewController, UITableViewDataSource
         columnsTableView.delegate = self
         namesTableView.delegate = self
         
-        for student in DataBaseManager.getAllStudents() {
+        for student in DatabaseManager.getAllStudents() {
             namesTextView.text.append(String(student.getStudentNo()) + " ")
             namesTextView.text.append(student.getFullName() + " ")
             namesTextView.text.append(student.getSeatingArrangement() + "\n")
