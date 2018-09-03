@@ -55,21 +55,19 @@ class AddWastageViewController: UIViewController {
         
         let userDefaults = UserDefaults.standard
         let lastRecordDate: String? = userDefaults.object(forKey: "LastRecordDate") as? String
-        
-        if lastRecordDate == nil {
+
+        if lastRecordDate == nil || currentDateTextFormat != lastRecordDate {
             userDefaults.set(currentDateTextFormat, forKey: "LastRecordDate")
-        } else {
-            if currentDateTextFormat == lastRecordDate {
-                print("been here, done that")
-                return
-            }
+        } else if currentDateTextFormat == lastRecordDate {
+            print("been here, done that")
+            let alert = UIAlertController(title: "Cannot record daily wastage twice", message: "Try again tomorrow", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
         }
-        
+    
         breakfastWasteStepper.maximumValue = 999999
         lunchWasteStepper.maximumValue = 999999
         dinnerWasteStepper.maximumValue = 999999
-        
+    
         directionsLabel.text = "Input the mass (in kg) of food wastage for each meal today (Date: \(currentDateTextFormat))"
     }
-    
 }

@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         DatabaseManager.openDatabase()
-        DatabaseManager.createColumnsTable()
+        DatabaseManager.createTablesTable()
         DatabaseManager.createArrangementTable()
         DatabaseManager.createAbsenteeTable()
         DatabaseManager.createWastageTable()

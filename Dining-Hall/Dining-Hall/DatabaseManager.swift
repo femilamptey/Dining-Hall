@@ -13,20 +13,20 @@ import SQLite3
 class DatabaseManager {
     private static var db: OpaquePointer? = nil
     private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
-    private static let createColumnTableQuery: String = "CREATE TABLE IF NOT EXISTS Columns (columnNumber INTEGER PRIMARY KEY AUTOINCREMENT, column TEXT)"
+    private static let createTablesTableQuery: String = "CREATE TABLE IF NOT EXISTS Tables (tableName TEXT PRIMARY KEY, column TEXT)"
     private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
     private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
     private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (date TEXT PRIMARY KEY, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
     private static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
-    private static let AddColumnsQuery = "INSERT INTO Columns (column) VALUES (?)"
+    private static let AddTableQuery = "INSERT OR REPLACE INTO Tables (tableName, column) VALUES (?, ?)"
     private static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
     private static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
     private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfastWaste, lunchWaste, dinnerWaste) VALUES (?, ?, ?, ?)"
-    private static let DropColumnsTableQuery = "DROP TABLE IF EXISTS Columns"
+    private static let DropTablesTableQuery = "DROP TABLE IF EXISTS Tables"
     private static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
     private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
     private static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
-    private static let getAllColumnsQuery = "SELECT column from Columns"
+    private static let getAllColumnsQuery = "SELECT column from Tables"
     private static let getAllStudentsAllocationsQuery = "SELECT * FROM Arrangements"
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -41,10 +41,10 @@ class DatabaseManager {
         }
     }
     
-    static func createColumnsTable() {
+    static func createTablesTable() {
         
-        if sqlite3_exec(db, createColumnTableQuery, nil, nil, nil) != SQLITE_OK {
-            print("Did not create Columns table")
+        if sqlite3_exec(db, createTablesTableQuery, nil, nil, nil) != SQLITE_OK {
+            print("Did not create Tables table")
         }
         
     }
@@ -77,7 +77,7 @@ class DatabaseManager {
         if sqlite3_exec(db, DropArrangementTableQuery, nil, nil, nil) != SQLITE_OK ||
             sqlite3_exec(db, DropAbsenteeTableQuery, nil, nil, nil) != SQLITE_OK ||
             sqlite3_exec(db, DropWastageTableQuery, nil, nil, nil) != SQLITE_OK ||
-            sqlite3_exec(db, DropColumnsTableQuery, nil, nil, nil) != SQLITE_OK {
+            sqlite3_exec(db, DropTablesTableQuery, nil, nil, nil) != SQLITE_OK {
             
             alertController = UIAlertController(title: "Error", message: "Could not clear all tables. Try again", preferredStyle: .alert)
             alertController.addAction(action)
@@ -87,6 +87,10 @@ class DatabaseManager {
             
             alertController = UIAlertController(title: "Successful", message: "All tables cleared", preferredStyle: .alert)
             alertController.addAction(action)
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "LastRecordDate")
+            
             return alertController
             
         }
@@ -124,13 +128,21 @@ class DatabaseManager {
         } else {
             alertController = UIAlertController(title: "Successful", message: "Absentees table cleared", preferredStyle: .alert)
             alertController.addAction(action)
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "LastRecordDate")
+            
             return alertController
         }
     }
     
-    private static func bindToColumnStatement(statement: OpaquePointer?, column: String) -> OpaquePointer? {
+    private static func bindToTableStatement(statement: OpaquePointer?, tableName: String, column: String) -> OpaquePointer? {
         
-        if sqlite3_bind_text(statement, 1, column, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 1, tableName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding table name")
+        }
+        
+        if sqlite3_bind_text(statement, 2, column, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding column")
         }
         
@@ -187,14 +199,14 @@ class DatabaseManager {
         return statement
     }
     
-    static func addColumn(column: String) {
+    static func addTable(tableName: String, column: String) {
         var statement: OpaquePointer?
         
-        if sqlite3_prepare(db, AddColumnsQuery, -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare(db, AddTableQuery, -1, &statement, nil) != SQLITE_OK {
             print("Error preparing statement.")
         }
         
-        statement = bindToColumnStatement(statement: statement, column: column)
+        statement = bindToTableStatement(statement: statement, tableName: tableName, column: column)
         
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Column saved sucessfully")
@@ -251,13 +263,14 @@ class DatabaseManager {
         
         return alertController
     }
+    
     static func getAllColumns() -> [String] {
         var columns: [String] = []
         var statement: OpaquePointer?
         var column: String
         
         if sqlite3_prepare_v2(db, getAllColumnsQuery, -1, &statement, nil) != SQLITE_OK {
-            print("Cannot retrieve students")
+            print("Cannot retrieve columns")
         }
         
         while sqlite3_step(statement) == SQLITE_ROW {

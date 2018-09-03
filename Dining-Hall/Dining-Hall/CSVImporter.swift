@@ -14,20 +14,36 @@ class CSVImporter {
     
     private static func process(contents: String) throws -> [ImportedStudent] {
         var importedStudents: [ImportedStudent] = []
-        let tableLength: Int
-        let tableColumns: [String]
         
-        var rows = contents.components(separatedBy: "\n")
-        var tableNums: [String] = []
+        let rows = contents.components(separatedBy: "\n")
+        var tables: [String] = []
         
-        rows[0].removeFirst(1)
-        tableColumns = rows[0].components(separatedBy: ",")
+        for row in rows {
+            let data = row.components(separatedBy: ",")
+            let table = data[0]
+            if let column = table.first {
+                DatabaseManager.addTable(tableName: table, column: "\(column)")
+            }
+            tables.append(table)
         
-        for tableColumn in tableColumns {
+            if data.count != 1 {
+                for i in 1...data.count - 1 {
+                    if data[i] != " " {
+                        let trimmedName = data[i].components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined(separator: " ")
+                        let student = ImportedStudent(fullName: trimmedName, seatingArrangement: table)
+                
+                        importedStudents.append(student)
+                    }
+                }
+            }
+            
+        }
+        
+        /* for tableColumn in record {
             DatabaseManager.addColumn(column: tableColumn.components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined() + " Column")
         }
         
-        tableLength = tableColumns.count
+        tableLength = record.count
         
         for row in rows {
             if row != rows[0] {
@@ -43,7 +59,7 @@ class CSVImporter {
                 for i in 1...tableLength {
                     let trimmedName = names[i].components(separatedBy: NSCharacterSet.newlines).joined(separator: " ")
                     
-                    let trimmedTableName = tableColumns[c].components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined()
+                    let trimmedTableName = record[c].components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined()
                     
                     print(trimmedName, trimmedTableName + String(i))
                     
@@ -55,7 +71,8 @@ class CSVImporter {
                     }
                 c += 1
                 }
-            }
+            } */
+        
         return importedStudents
         }
     
