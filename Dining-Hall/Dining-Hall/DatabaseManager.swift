@@ -27,6 +27,7 @@ class DatabaseManager {
     private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
     private static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
     private static let getAllColumnsQuery = "SELECT column from Tables"
+    private static let getAllTablesQuery = "SELECT tableName from Tables"
     private static let getAllStudentsAllocationsQuery = "SELECT * FROM Arrangements"
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -276,10 +277,26 @@ class DatabaseManager {
         while sqlite3_step(statement) == SQLITE_ROW {
             column = String.init(cString: sqlite3_column_text(statement, 0))
             columns.append(column)
-            print(column)
         }
         
         return columns
+    }
+    
+    static func getAllTables() -> [String] {
+        var tables: [String] = []
+        var statement: OpaquePointer?
+        var table: String
+        
+        if sqlite3_prepare_v2(db, getAllTablesQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve tables")
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            table = String.init(cString: sqlite3_column_text(statement, 0))
+            tables.append(table)
+        }
+        
+        return tables
     }
     
     static func getAllStudents() -> [DatabaseStudent] {

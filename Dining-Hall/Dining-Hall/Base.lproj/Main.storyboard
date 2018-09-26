@@ -572,7 +572,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oba-2h-JVM">
-                                <rect key="frame" x="0.0" y="208" width="768" height="816"/>
+                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="5" id="nmk-vq-YIt">
                                     <size key="itemSize" width="768" height="300"/>
@@ -581,7 +581,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="columnCell" id="ImL-SS-hF3">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tableCell" id="ImL-SS-hF3">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -598,7 +598,7 @@
                             <constraint firstItem="Oba-2h-JVM" firstAttribute="leading" secondItem="G5M-DU-mQg" secondAttribute="leading" id="WAk-y9-dmt"/>
                             <constraint firstItem="G5M-DU-mQg" firstAttribute="bottom" secondItem="vsu-Ic-sMK" secondAttribute="bottom" constant="960" id="YCd-3b-Xoy"/>
                             <constraint firstItem="vsu-Ic-sMK" firstAttribute="top" secondItem="G5M-DU-mQg" secondAttribute="top" id="a7v-Ej-jxl"/>
-                            <constraint firstItem="Oba-2h-JVM" firstAttribute="top" secondItem="vsu-Ic-sMK" secondAttribute="bottom" constant="144" id="bma-Rt-GLj"/>
+                            <constraint firstItem="Oba-2h-JVM" firstAttribute="top" secondItem="vsu-Ic-sMK" secondAttribute="bottom" id="bma-Rt-GLj"/>
                             <constraint firstItem="Oba-2h-JVM" firstAttribute="trailing" secondItem="G5M-DU-mQg" secondAttribute="trailing" id="ehy-Gs-1pC"/>
                             <constraint firstItem="vsu-Ic-sMK" firstAttribute="leading" secondItem="G5M-DU-mQg" secondAttribute="leading" id="izm-EC-x9g"/>
                             <constraint firstItem="Oba-2h-JVM" firstAttribute="bottom" secondItem="G5M-DU-mQg" secondAttribute="bottom" id="tEI-Ka-aw0"/>
@@ -634,7 +634,7 @@
         <image name="SOS Logo" width="272" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O1l-Db-6Do"/>
+        <segue reference="xzW-dD-btm"/>
         <segue reference="6S0-TO-JiA"/>
         <segue reference="eRw-cn-mZv"/>
     </inferredMetricsTieBreakers>

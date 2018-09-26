@@ -34,6 +34,10 @@ class DBManagerViewController: UIViewController {
         for student in DatabaseManager.getAllStudents() {
             print(student.getStudentNo(), student.getFullName(), student.getSeatingArrangement())
         }
+        
+        for table in DatabaseManager.getAllTables() {
+            print(table)
+        }
     }
 
     @IBAction func resetDB(_ sender: Any) {

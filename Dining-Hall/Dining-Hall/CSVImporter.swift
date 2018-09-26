@@ -39,42 +39,9 @@ class CSVImporter {
             
         }
         
-        /* for tableColumn in record {
-            DatabaseManager.addColumn(column: tableColumn.components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined() + " Column")
-        }
-        
-        tableLength = record.count
-        
-        for row in rows {
-            if row != rows[0] {
-                let tableNum = row.components(separatedBy: ",")
-                tableNums.append(tableNum[0])
-            }
-        }
-        var c = 0
-        
-        for row in rows {
-            if row != rows[0] && row != "" {
-                let names = row.components(separatedBy: ",")
-                for i in 1...tableLength {
-                    let trimmedName = names[i].components(separatedBy: NSCharacterSet.newlines).joined(separator: " ")
-                    
-                    let trimmedTableName = record[c].components(separatedBy: NSCharacterSet.whitespacesAndNewlines).joined()
-                    
-                    print(trimmedName, trimmedTableName + String(i))
-                    
-                    let student = ImportedStudent(fullName: trimmedName, seatingArrangement: trimmedTableName+String(i))
-                    
-                    importedStudents.append(student)
-                    
-                    print(trimmedName)
-                    }
-                c += 1
-                }
-            } */
-        
         return importedStudents
-        }
+        
+    }
     
     public static func processFile(path: URL) throws -> [ImportedStudent] {
         let contents =  try String.init(contentsOf: path); do {}
