@@ -11,13 +11,12 @@ import UIKit
 class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     private let cellReuseIdentifier = "tableCell"
-    private var columnIndex = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // let flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = UICollectionViewFlowLayout()
         collectionView.register(TableCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         collectionView.delegate = self
@@ -32,7 +31,7 @@ class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return DatabaseManager.getAllColumns().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,12 +39,7 @@ class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource
         let label = UILabel(frame: cell.frame)
         label.center = cell.center
         label.textAlignment = NSTextAlignment.center
-        label.text = "\(DatabaseManager.getAllColumns()[columnIndex]) Column"
-        if columnIndex != 4 {
-            columnIndex += 1
-        } else {
-            columnIndex = 0
-        }
+        label.text = "\(indexPath.row) Column"
         cell.contentView.addSubview(label)
         cell.backgroundColor = UIColor.green
         return cell
