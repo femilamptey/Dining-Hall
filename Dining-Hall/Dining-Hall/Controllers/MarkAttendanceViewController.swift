@@ -39,14 +39,15 @@ class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource
         let label = UILabel(frame: cell.frame)
         label.center = cell.center
         label.textAlignment = NSTextAlignment.center
-        label.text = "\(indexPath.row) Column"
+        label.text = "\(DatabaseManager.getAllColumns()[indexPath.row]) Column"
         cell.contentView.addSubview(label)
         cell.backgroundColor = UIColor.green
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    @objc func tap(_ sender: UITapGestureRecognizer) {
+        print("Tapped")
     }
     
 }

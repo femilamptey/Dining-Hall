@@ -276,7 +276,10 @@ class DatabaseManager {
         
         while sqlite3_step(statement) == SQLITE_ROW {
             column = String.init(cString: sqlite3_column_text(statement, 0))
-            columns.append(column)
+            
+            if !columns.contains(column) {
+              columns.append(column)
+            }
         }
         
         return columns

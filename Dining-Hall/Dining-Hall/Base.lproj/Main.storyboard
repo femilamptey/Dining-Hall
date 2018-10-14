@@ -223,186 +223,6 @@
             </objects>
             <point key="canvasLocation" x="1641" y="210"/>
         </scene>
-        <!--Add Wastage View Controller-->
-        <scene sceneID="HMC-Ih-5l0">
-            <objects>
-                <viewController storyboardIdentifier="Add Wastage" title="Add Wastage View Controller" id="d8o-SP-cy6" customClass="AddWastageViewController" customModule="Dining_Hall" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nny-J5-x7l">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHZ-N8-gYc">
-                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
-                                <items>
-                                    <navigationItem title="Add Wastage" id="VaF-dz-D18">
-                                        <barButtonItem key="leftBarButtonItem" title="Exit without saving" id="slh-wQ-eJO">
-                                            <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="FiO-gA-Vdc"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <connections>
-                                            <outlet property="backBarButtonItem" destination="slh-wQ-eJO" id="INP-Yy-Wys"/>
-                                        </connections>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input the mass (in kg) of food wastage for each meal today (Date: dd/mm/yy)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyZ-8M-3jk">
-                                <rect key="frame" x="20" y="98" width="728" height="123"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakfast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWy-fN-veN">
-                                <rect key="frame" x="20" y="227" width="110" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I80-Vf-ojZ">
-                                <rect key="frame" x="356" y="227" width="45" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Pyg-J9-ebI">
-                                <rect key="frame" x="625" y="229" width="94" height="29"/>
-                                <connections>
-                                    <action selector="breakfastWasteChanged:" destination="d8o-SP-cy6" eventType="valueChanged" id="tuw-L7-Rng"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyG-fW-MPx">
-                                <rect key="frame" x="20" y="306" width="73" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dinner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD3-O7-V9B">
-                                <rect key="frame" x="20" y="382" width="77" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cix-Kt-0JP">
-                                <rect key="frame" x="356" y="308" width="45" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6F0-Xx-KuM">
-                                <rect key="frame" x="625" y="308" width="94" height="29"/>
-                                <connections>
-                                    <action selector="lunchWasteStepper:" destination="d8o-SP-cy6" eventType="valueChanged" id="aBl-xH-RSp"/>
-                                </connections>
-                            </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="nVr-jO-37c">
-                                <rect key="frame" x="625" y="385" width="94" height="29"/>
-                                <connections>
-                                    <action selector="dinnerWasteStepper:" destination="d8o-SP-cy6" eventType="valueChanged" id="GHf-Mp-FQv"/>
-                                </connections>
-                            </stepper>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-rg-X2a">
-                                <rect key="frame" x="307" y="522" width="155" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="done:" destination="d8o-SP-cy6" eventType="primaryActionTriggered" id="sZH-jx-Bnn"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSK-IY-rT7">
-                                <rect key="frame" x="356" y="385" width="45" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="I80-Vf-ojZ" firstAttribute="baseline" secondItem="UWy-fN-veN" secondAttribute="baseline" id="2Iz-VS-RmV"/>
-                            <constraint firstItem="oB7-fG-14P" firstAttribute="bottom" secondItem="UWy-fN-veN" secondAttribute="bottom" constant="764" id="3hS-f0-S7s"/>
-                            <constraint firstItem="nHZ-N8-gYc" firstAttribute="top" secondItem="oB7-fG-14P" secondAttribute="top" id="9WT-sS-IT5"/>
-                            <constraint firstItem="wyZ-8M-3jk" firstAttribute="top" secondItem="nHZ-N8-gYc" secondAttribute="bottom" constant="34" id="9XU-iW-Inx"/>
-                            <constraint firstItem="TSK-IY-rT7" firstAttribute="centerY" secondItem="nVr-jO-37c" secondAttribute="centerY" constant="2" id="9t1-9k-qjz"/>
-                            <constraint firstItem="hD3-O7-V9B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pyG-fW-MPx" secondAttribute="leading" id="DEY-XF-oiv"/>
-                            <constraint firstAttribute="trailing" secondItem="cix-Kt-0JP" secondAttribute="trailing" constant="367" id="DGW-Ao-M3y"/>
-                            <constraint firstItem="I80-Vf-ojZ" firstAttribute="firstBaseline" secondItem="UWy-fN-veN" secondAttribute="firstBaseline" id="FUX-n9-dCZ"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="top" secondItem="wyZ-8M-3jk" secondAttribute="bottom" constant="6" id="Fvk-u2-62w"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="leading" secondItem="oB7-fG-14P" secondAttribute="leading" constant="20" id="ISY-RA-XSS"/>
-                            <constraint firstAttribute="trailing" secondItem="hD3-O7-V9B" secondAttribute="trailing" constant="671" id="NEX-0w-97a"/>
-                            <constraint firstItem="oB7-fG-14P" firstAttribute="trailing" secondItem="Pyg-J9-ebI" secondAttribute="trailing" constant="49" id="OSg-Ze-9bn"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="top" secondItem="wyZ-8M-3jk" secondAttribute="bottom" constant="6" id="Wl2-ba-AuA"/>
-                            <constraint firstItem="TSK-IY-rT7" firstAttribute="top" secondItem="cix-Kt-0JP" secondAttribute="bottom" constant="44" id="Y0N-od-3Uw"/>
-                            <constraint firstItem="wyZ-8M-3jk" firstAttribute="leading" secondItem="oB7-fG-14P" secondAttribute="leading" constant="20" id="Y2c-iB-lfI"/>
-                            <constraint firstItem="oB7-fG-14P" firstAttribute="trailing" secondItem="wyZ-8M-3jk" secondAttribute="trailing" constant="20" id="YzA-2g-pS3"/>
-                            <constraint firstItem="cix-Kt-0JP" firstAttribute="centerY" secondItem="6F0-Xx-KuM" secondAttribute="centerY" constant="2" id="ZJl-51-gPs"/>
-                            <constraint firstItem="6F0-Xx-KuM" firstAttribute="leading" secondItem="Pyg-J9-ebI" secondAttribute="leading" id="atI-Ud-RJA"/>
-                            <constraint firstItem="nVr-jO-37c" firstAttribute="leading" secondItem="6F0-Xx-KuM" secondAttribute="leading" id="beT-ZI-yID"/>
-                            <constraint firstItem="pyG-fW-MPx" firstAttribute="baseline" secondItem="cix-Kt-0JP" secondAttribute="baseline" constant="-2" id="cLg-B8-wUx"/>
-                            <constraint firstItem="TSK-IY-rT7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cix-Kt-0JP" secondAttribute="leading" id="deE-L8-EUN"/>
-                            <constraint firstItem="oB7-fG-14P" firstAttribute="bottom" secondItem="UWy-fN-veN" secondAttribute="bottom" constant="764" id="e2g-mH-3wT"/>
-                            <constraint firstItem="hD3-O7-V9B" firstAttribute="top" secondItem="pyG-fW-MPx" secondAttribute="bottom" constant="43" id="e4J-fy-dtc"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="leading" secondItem="oB7-fG-14P" secondAttribute="leading" constant="20" id="f0p-cA-ViX"/>
-                            <constraint firstAttribute="trailing" secondItem="TSK-IY-rT7" secondAttribute="trailing" constant="367" id="ffi-Wu-VL8"/>
-                            <constraint firstItem="nHZ-N8-gYc" firstAttribute="leading" secondItem="oB7-fG-14P" secondAttribute="leading" id="kMS-5z-vXt"/>
-                            <constraint firstItem="pyG-fW-MPx" firstAttribute="centerX" secondItem="UWy-fN-veN" secondAttribute="centerX" constant="-18.5" id="kzu-go-5Ou"/>
-                            <constraint firstItem="I80-Vf-ojZ" firstAttribute="centerY" secondItem="Pyg-J9-ebI" secondAttribute="centerY" id="nOH-bI-BfR"/>
-                            <constraint firstItem="I80-Vf-ojZ" firstAttribute="centerX" secondItem="wyZ-8M-3jk" secondAttribute="centerX" constant="-5.5" id="odw-jU-3Vo"/>
-                            <constraint firstItem="pyG-fW-MPx" firstAttribute="top" secondItem="UWy-fN-veN" secondAttribute="bottom" constant="46" id="pWP-ya-Mod"/>
-                            <constraint firstItem="nHZ-N8-gYc" firstAttribute="trailing" secondItem="oB7-fG-14P" secondAttribute="trailing" id="rlg-7h-FBg"/>
-                            <constraint firstItem="cix-Kt-0JP" firstAttribute="leading" secondItem="I80-Vf-ojZ" secondAttribute="leading" id="trs-jR-eRL"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="top" secondItem="wyZ-8M-3jk" secondAttribute="bottom" constant="6" id="u18-XD-hR7"/>
-                            <constraint firstItem="UWy-fN-veN" firstAttribute="top" secondItem="wyZ-8M-3jk" secondAttribute="bottom" constant="6" id="v36-l5-TPb"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="oB7-fG-14P"/>
-                    </view>
-                    <connections>
-                        <outlet property="breakfastWasteLabel" destination="I80-Vf-ojZ" id="Ypp-Cr-Zsy"/>
-                        <outlet property="breakfastWasteStepper" destination="Pyg-J9-ebI" id="zS5-eM-7cJ"/>
-                        <outlet property="dinnerWasteLabel" destination="TSK-IY-rT7" id="gg1-PV-oXO"/>
-                        <outlet property="dinnerWasteStepper" destination="nVr-jO-37c" id="Zuo-57-HQn"/>
-                        <outlet property="directionsLabel" destination="wyZ-8M-3jk" id="KiB-6H-HQR"/>
-                        <outlet property="doneBtn" destination="oE2-rg-X2a" id="FRc-zg-KsX"/>
-                        <outlet property="lunchWasteLabel" destination="cix-Kt-0JP" id="uln-Gb-FdN"/>
-                        <outlet property="lunchWasteStepper" destination="6F0-Xx-KuM" id="bah-sQ-3BF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Dy-8c-jr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1638.28125" y="956.83593749999989"/>
-        </scene>
-        <!--Review Wastage View Controller-->
-        <scene sceneID="Nlu-u4-E1P">
-            <objects>
-                <viewController storyboardIdentifier="Review Wastage" title="Review Wastage View Controller" id="fgy-me-jXS" customClass="ReviewWastageViewController" customModule="Dining_Hall" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="i5y-ev-y2k">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfP-eI-hZr">
-                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Review Wastage" id="0vU-OM-iPV">
-                                        <barButtonItem key="leftBarButtonItem" title="Done" id="f1J-j7-5Dq">
-                                            <connections>
-                                                <segue destination="H1p-Uh-vWS" kind="show" id="mAC-HW-YMv"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <connections>
-                                            <outlet property="backBarButtonItem" destination="f1J-j7-5Dq" id="R81-ye-i4J"/>
-                                        </connections>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="kEL-P2-PYR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0mE-Fh-nZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1638" y="1678"/>
-        </scene>
         <!--Manager View Controller-->
         <scene sceneID="8y3-KB-0zm">
             <objects>
@@ -434,7 +254,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyJ-ra-nTF">
-                                <rect key="frame" x="20" y="93" width="332" height="468"/>
+                                <rect key="frame" x="20" y="93" width="388" height="911"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Seating Arrangements"/>
                                 <connections>
@@ -442,35 +262,26 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilx-Nl-ZnF">
-                                <rect key="frame" x="416" y="93" width="332" height="468"/>
+                                <rect key="frame" x="416" y="93" width="332" height="911"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="332" id="Dd9-uP-Per"/>
-                                    <constraint firstAttribute="height" constant="468" id="FST-ka-Xwb"/>
+                                    <constraint firstAttribute="height" constant="911" id="FST-ka-Xwb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Absentees"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxN-by-m8i">
-                                <rect key="frame" x="20" y="644" width="728" height="360"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="Wastage"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xyJ-ra-nTF" firstAttribute="leading" secondItem="HxN-by-m8i" secondAttribute="leading" id="7Ul-4Q-tRN"/>
                             <constraint firstItem="ilx-Nl-ZnF" firstAttribute="top" secondItem="xHP-fw-lsz" secondAttribute="top" constant="93" id="Ai9-pd-5cg"/>
                             <constraint firstItem="ilx-Nl-ZnF" firstAttribute="trailing" secondItem="xHP-fw-lsz" secondAttribute="trailingMargin" id="ECB-QZ-zQF"/>
                             <constraint firstItem="YMN-bE-Aug" firstAttribute="leading" secondItem="xHP-fw-lsz" secondAttribute="leading" id="HSA-lb-sRG"/>
                             <constraint firstItem="ilx-Nl-ZnF" firstAttribute="top" secondItem="YMN-bE-Aug" secondAttribute="bottom" constant="29" id="JkZ-HZ-wna"/>
-                            <constraint firstItem="ilx-Nl-ZnF" firstAttribute="leading" secondItem="xyJ-ra-nTF" secondAttribute="trailing" constant="64" id="KQZ-MU-bBM"/>
-                            <constraint firstItem="ilx-Nl-ZnF" firstAttribute="trailing" secondItem="HxN-by-m8i" secondAttribute="trailing" id="NZl-UH-xfB"/>
+                            <constraint firstItem="ilx-Nl-ZnF" firstAttribute="leading" secondItem="xyJ-ra-nTF" secondAttribute="trailing" constant="8" id="KQZ-MU-bBM"/>
                             <constraint firstItem="xyJ-ra-nTF" firstAttribute="leading" secondItem="xHP-fw-lsz" secondAttribute="leadingMargin" id="TBB-dA-zgX"/>
                             <constraint firstItem="ilx-Nl-ZnF" firstAttribute="top" secondItem="xyJ-ra-nTF" secondAttribute="top" id="b9X-DB-P9P"/>
-                            <constraint firstItem="YMN-bE-Aug" firstAttribute="centerX" secondItem="HxN-by-m8i" secondAttribute="centerX" id="hHq-uS-6Mq"/>
-                            <constraint firstItem="HxN-by-m8i" firstAttribute="top" secondItem="ilx-Nl-ZnF" secondAttribute="bottom" constant="83" id="lih-Az-FXh"/>
                             <constraint firstItem="ilx-Nl-ZnF" firstAttribute="baseline" secondItem="xyJ-ra-nTF" secondAttribute="firstBaseline" id="pZ4-FL-GNE"/>
-                            <constraint firstAttribute="bottom" secondItem="HxN-by-m8i" secondAttribute="bottom" constant="20" symbolic="YES" id="tD6-gi-VEw"/>
+                            <constraint firstAttribute="trailing" secondItem="YMN-bE-Aug" secondAttribute="trailing" id="roe-N2-Uqj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tz0-Lm-Smx"/>
                     </view>
@@ -478,7 +289,6 @@
                         <outlet property="resetDBBtn" destination="rwt-8E-H2w" id="Uoq-nQ-0OT"/>
                         <outlet property="viewAbsenteesBtn" destination="ilx-Nl-ZnF" id="y61-Ss-YVe"/>
                         <outlet property="viewArrangementsBtn" destination="xyJ-ra-nTF" id="Ksi-2n-t1F"/>
-                        <outlet property="viewWastageBtn" destination="HxN-by-m8i" id="Fcg-cl-cvT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFD-rz-qqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,17 +324,17 @@
                                 <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6ms-aX-r4r">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="768" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GDV-iD-mkF">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tableCell" id="GDV-iD-mkF" customClass="TableCell" customModule="Dining_Hall" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
@@ -634,7 +444,7 @@
         <image name="SOS Logo" width="272" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xzW-dD-btm"/>
+        <segue reference="O1l-Db-6Do"/>
         <segue reference="6S0-TO-JiA"/>
         <segue reference="eRw-cn-mZv"/>
     </inferredMetricsTieBreakers>

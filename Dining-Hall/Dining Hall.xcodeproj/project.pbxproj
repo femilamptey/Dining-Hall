@@ -28,8 +28,6 @@
 		89CF712B2057F645005B7D43 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF712A2057F645005B7D43 /* Function.swift */; };
 		89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */; };
 		89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */; };
-		89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF1396205866EB004A0018 /* AddWastageViewController.swift */; };
-		89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF139820586701004A0018 /* ReviewWastageViewController.swift */; };
 		89EF139C20586AF1004A0018 /* Default768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EF139B20586AF1004A0018 /* Default768x1024.png */; };
 /* End PBXBuildFile section */
 
@@ -81,8 +79,6 @@
 		89CF712A2057F645005B7D43 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
 		89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAbsenteesViewController.swift; sourceTree = "<group>"; };
-		89EF1396205866EB004A0018 /* AddWastageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWastageViewController.swift; sourceTree = "<group>"; };
-		89EF139820586701004A0018 /* ReviewWastageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWastageViewController.swift; sourceTree = "<group>"; };
 		89EF139B20586AF1004A0018 /* Default768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default768x1024.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,8 +140,6 @@
 				89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */,
 				89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */,
 				8969117320853D2B000EC783 /* DBManagerViewController.swift */,
-				89EF139820586701004A0018 /* ReviewWastageViewController.swift */,
-				89EF1396205866EB004A0018 /* AddWastageViewController.swift */,
 				89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */,
 				898ED1362041956800AB8726 /* DetailViewController.swift */,
 				893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */,
@@ -370,14 +364,12 @@
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
 				892740A4211E1180000A1AE2 /* CSVImporter.swift in Sources */,
 				893E7FA62127A2DC00A2D3EE /* SeatingArrangementsViewController.swift in Sources */,
-				89EF139920586701004A0018 /* ReviewWastageViewController.swift in Sources */,
 				898849DA208A281400ED5489 /* Student.swift in Sources */,
 				89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */,
 				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
 				8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */,
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
 				890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */,
-				89EF1397205866EB004A0018 /* AddWastageViewController.swift in Sources */,
 				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
 				89CF712B2057F645005B7D43 /* Function.swift in Sources */,
 			);
