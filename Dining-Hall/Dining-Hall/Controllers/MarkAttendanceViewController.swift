@@ -40,6 +40,7 @@ class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource
         label.center = cell.center
         label.textAlignment = NSTextAlignment.center
         label.text = "\(DatabaseManager.getAllColumns()[indexPath.row]) Column"
+        label.font = label.font.withSize(30)
         cell.contentView.addSubview(label)
         cell.backgroundColor = UIColor.green
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
@@ -47,7 +48,10 @@ class MarkAttendanceViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer) {
-        print("Tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "markingVC") as UIViewController
+        present(vc, animated:true, completion: nil)
+        let controller = vc as! MarkingAttendanceViewController
     }
     
 }

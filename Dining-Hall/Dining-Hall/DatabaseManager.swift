@@ -296,7 +296,9 @@ class DatabaseManager {
         
         while sqlite3_step(statement) == SQLITE_ROW {
             table = String.init(cString: sqlite3_column_text(statement, 0))
-            tables.append(table)
+            if !tables.contains(table) {
+                tables.append(table)
+            }
         }
         
         return tables
