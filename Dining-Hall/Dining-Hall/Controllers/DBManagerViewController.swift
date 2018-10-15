@@ -12,7 +12,6 @@ import SQLite3
 class DBManagerViewController: UIViewController {
     
     @IBOutlet weak var resetDBBtn: UIButton!
-    @IBOutlet weak var viewWastageBtn: UIButton!
     @IBOutlet weak var viewAbsenteesBtn: UIButton!
     @IBOutlet weak var viewArrangementsBtn: UIButton!
    
@@ -26,10 +25,6 @@ class DBManagerViewController: UIViewController {
         viewAbsenteesBtn.backgroundColor = UIColor.yellow
         viewAbsenteesBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         viewAbsenteesBtn.layer.cornerRadius = 20
-        
-        viewWastageBtn.backgroundColor = UIColor.red
-        viewWastageBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
-        viewWastageBtn.layer.cornerRadius = 20
         
         for student in DatabaseManager.getAllStudents() {
             print(student.getStudentNo(), student.getFullName(), student.getSeatingArrangement())
