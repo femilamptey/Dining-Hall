@@ -8,24 +8,32 @@
 
 import Foundation
 
-class DatabaseStudent {
+class DatabaseStudent: ImportedStudent {
     private let studentNo: Int
-    private let fullName: String
-    private let seatingArrangement: String
     
     init(studentNo: Int, fullName: String, seatingArrangement: String) {
         self.studentNo = studentNo
-        self.fullName = fullName
-        self.seatingArrangement = seatingArrangement
+        super.init(fullName: fullName, seatingArrangement: seatingArrangement)
     }
 
-    func getStudentNo() -> Int { return self.studentNo }
-    func getFullName() -> String { return self.fullName }
-    func getSeatingArrangement() -> String { return self.seatingArrangement }
-    
+    public func getStudentNo() -> Int { return self.studentNo }
+
 }
 
 class AbsenteeStudent {
+    
+}
+
+class Student: DatabaseStudent {
+    private var isPresent: Bool
+    
+    override init(studentNo: Int, fullName: String, seatingArrangement: String) {
+        self.isPresent = true
+        super.init(studentNo: studentNo, fullName: fullName, seatingArrangement: seatingArrangement)
+    }
+    
+    public func getAttendance() -> Bool { return self.isPresent }
+    public func setAttendance(isPresent: Bool) { self.isPresent = isPresent }
     
 }
 

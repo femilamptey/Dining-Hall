@@ -382,6 +382,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eCU-yy-mkA" id="VLi-tV-g0n"/>
+                                    <outlet property="delegate" destination="eCU-yy-mkA" id="Mhc-1G-Fl7"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c52-7z-q8X">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
@@ -404,7 +408,7 @@
                                     <constraint firstAttribute="height" constant="960" id="fdb-hl-9QI"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dgX-q9-Agq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" id="dgX-q9-Agq">
                                         <rect key="frame" x="0.0" y="28" width="458" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgX-q9-Agq" id="QGd-kn-34p">
@@ -413,6 +417,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eCU-yy-mkA" id="wNW-sM-Ac3"/>
+                                    <outlet property="delegate" destination="eCU-yy-mkA" id="cfP-Hl-l27"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

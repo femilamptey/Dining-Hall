@@ -29,6 +29,9 @@ class DatabaseManager {
     private static let getAllColumnsQuery = "SELECT column from Tables"
     private static let getAllTablesQuery = "SELECT tableName from Tables"
     private static let getAllStudentsAllocationsQuery = "SELECT * FROM Arrangements"
+    private static let getStudentsOnTableQuery = "Select * FROM Arrangements WHERE (seatingPosition = (?))"
+    private static let getStudentsOnColumnQuery = "Select * FROM Arrangements WHERE (seatingPosition LIKE (?))"
+    
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
     
@@ -157,6 +160,15 @@ class DatabaseManager {
         }
         
         if sqlite3_bind_text(statement, 2, table, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding seating position")
+        }
+        
+        return statement
+    }
+    
+    private static func bindToSelectFromTableStatement(statement: OpaquePointer?, table: String) -> OpaquePointer? {
+        
+        if sqlite3_bind_text(statement, 1, table, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding seating position")
         }
         
@@ -314,6 +326,29 @@ class DatabaseManager {
         if sqlite3_prepare_v2(db, getAllStudentsAllocationsQuery, -1, &statement, nil) != SQLITE_OK {
             print("Cannot retrieve students")
         }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            studentID = Int(sqlite3_column_int64(statement, 0))
+            fullName = String.init(cString: sqlite3_column_text(statement, 1))
+            seatingPosition = String.init(cString: sqlite3_column_text(statement, 2))
+            databaseStudents.append(DatabaseStudent.init(studentNo: studentID, fullName: fullName, seatingArrangement: seatingPosition))
+        }
+        
+        return databaseStudents
+    }
+    
+    static func getStudentsOnTable(table: String) -> [DatabaseStudent] {
+        var databaseStudents: [DatabaseStudent] = []
+        var statement: OpaquePointer?
+        var studentID: Int
+        var fullName: String
+        var seatingPosition: String
+        
+        if sqlite3_prepare_v2(db, getStudentsOnTableQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve students")
+        }
+        
+        statement = bindToSelectFromTableStatement(statement: statement, table: table)
         
         while sqlite3_step(statement) == SQLITE_ROW {
             studentID = Int(sqlite3_column_int64(statement, 0))
