@@ -15,13 +15,15 @@ class MarkingAttendanceViewController: UIViewController, UITableViewDataSource, 
     var selectedTable: String = "A1"
     var indexToMark: IndexPath = IndexPath(row: 0, section: 0)
     var tables: [String] = []
-    var students: [DatabaseStudent] = []
+    var students: [Student] = []
     var studentsOnSelectedTable: [Student] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for student in DatabaseManager.getAllStudents() {
+            students.append(Student(student: student))
+        }
         tables = DatabaseManager.getAllTables()
-        students = DatabaseManager.getAllStudents()
         self.getSelectedStudents()
     }
     
@@ -69,12 +71,10 @@ class MarkingAttendanceViewController: UIViewController, UITableViewDataSource, 
             selectedTable = (tablesTbl.cellForRow(at: indexPath)?.textLabel!.text!)!
             namesTbl.reloadData()
         } else {
-            do {
-                studentsOnSelectedTable[indexPath.row].mark()
-            } catch is Error {
-                
+            if indexPath.row <= namesTbl.numberOfRows(inSection: indexPath.section) - 1 {
+                students[indexPath.row].mark()
+                namesTbl.reloadData()
             }
-            namesTbl.reloadData()
         }
     }
 }
