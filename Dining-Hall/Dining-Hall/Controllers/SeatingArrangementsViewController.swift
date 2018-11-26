@@ -50,7 +50,7 @@ class SeatingArrangementsViewController: UIViewController, UICollectionViewDataS
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "markingVC") as UIViewController
         present(vc, animated:true, completion: nil)
-        let controller = vc as! MarkingAttendanceViewController
+        let controller = vc as! MarkAttendanceViewController
     }
 
 }

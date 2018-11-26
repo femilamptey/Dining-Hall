@@ -11,7 +11,7 @@ import UIKit
 class StudentTableCell: UITableViewCell {
     
     var radioBtnImageView: UIImageView!
-    var radioBtnImage: UIImage
+    var radioBtnImage: UIImage!
     var studentNameLabel: UILabel!
     var student: Student
     
@@ -19,14 +19,14 @@ class StudentTableCell: UITableViewCell {
         self.student = student
         studentNameLabel.text = "\(student.getStudentNo())      \(student.getFullName())"
         studentNameLabel.frame = super.frame
-        radioBtnImageView.frame = CGRect(x: 399, y: 0, width: 59, height: 44)
+        radioBtnImageView.frame = CGRect(x: 399, y: 0, width: 59, height: 40)
         
         if student.isPresent() {
             self.radioBtnImage = UIImage(imageLiteralResourceName: "RadioButtonUnselected")
         } else {
             self.radioBtnImage = UIImage(imageLiteralResourceName: "RadioButtonSelected")
         }
-        
+        self.radioBtnImageView.image = self.radioBtnImage
         self.addSubview(radioBtnImageView)
         self.addSubview(studentNameLabel)
     }
