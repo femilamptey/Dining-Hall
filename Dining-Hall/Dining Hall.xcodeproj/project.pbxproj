@@ -12,7 +12,7 @@
 		893E7FA4212794FD00A2D3EE /* Transparent logo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 893E7FA3212794FD00A2D3EE /* Transparent logo.PNG */; };
 		893E7FA62127A2DC00A2D3EE /* SeatingArrangementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */; };
 		895078702174F9B200BD8CC2 /* MarkingAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950786F2174F9B100BD8CC2 /* MarkingAttendanceViewController.swift */; };
-		89582A1B215086BE0029E81F /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1A215086BE0029E81F /* StudentCell.swift */; };
+		89582A1B215086BE0029E81F /* StudentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1A215086BE0029E81F /* StudentTableCell.swift */; };
 		89582A1D215086D60029E81F /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1C215086D60029E81F /* TableCell.swift */; };
 		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
 		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
@@ -56,7 +56,7 @@
 		893E7FA3212794FD00A2D3EE /* Transparent logo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Transparent logo.PNG"; path = "../../../../../../../Downloads/Transparent logo.PNG"; sourceTree = "<group>"; };
 		893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingArrangementsViewController.swift; sourceTree = "<group>"; };
 		8950786F2174F9B100BD8CC2 /* MarkingAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkingAttendanceViewController.swift; sourceTree = "<group>"; };
-		89582A1A215086BE0029E81F /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
+		89582A1A215086BE0029E81F /* StudentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableCell.swift; sourceTree = "<group>"; };
 		89582A1C215086D60029E81F /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 				895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */,
 				898849D9208A281400ED5489 /* Student.swift */,
 				890CB8A620AC2FD3009C207E /* DatabaseManager.swift */,
+				89582A1A215086BE0029E81F /* StudentTableCell.swift */,
 				892740A3211E1180000A1AE2 /* CSVImporter.swift */,
-				89582A1A215086BE0029E81F /* StudentCell.swift */,
 				89582A1C215086D60029E81F /* TableCell.swift */,
 			);
 			path = "Dining-Hall";
@@ -361,7 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89582A1B215086BE0029E81F /* StudentCell.swift in Sources */,
+				89582A1B215086BE0029E81F /* StudentTableCell.swift in Sources */,
 				89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */,
 				89582A1D215086D60029E81F /* TableCell.swift in Sources */,
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,

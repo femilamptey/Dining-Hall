@@ -25,16 +25,26 @@ class AbsenteeStudent {
 }
 
 class Student: DatabaseStudent {
-    private var isPresent: Bool
+    private var presence: Bool
     
-    override init(studentNo: Int, fullName: String, seatingArrangement: String) {
-        self.isPresent = true
-        super.init(studentNo: studentNo, fullName: fullName, seatingArrangement: seatingArrangement)
+    init(student: DatabaseStudent) {
+        self.presence = true
+        super.init(studentNo: student.getStudentNo(), fullName: student.getFullName(), seatingArrangement: student.getSeatingArrangement())
     }
     
-    public func getAttendance() -> Bool { return self.isPresent }
-    public func setAttendance(isPresent: Bool) { self.isPresent = isPresent }
+    public func mark() {
+        print(self.getFullName())
+        print("Was: \(self.isPresent())")
+        if self.isPresent() == true {
+            self.setAttendance(presence: false)
+        } else {
+            self.setAttendance(presence: true)
+        }
+        print("Is now: \(self.isPresent())")
+    }
     
+    public func isPresent() -> Bool { return self.presence }
+    public func setAttendance(presence: Bool) { self.presence = presence }
 }
 
 class ImportedStudent {
