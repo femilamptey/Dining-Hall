@@ -62,8 +62,8 @@ class ViewAbsenteesViewController: UIViewController, UITableViewDataSource, UITa
         } else {
             if indexPath.row <= absenteesTbl.numberOfRows(inSection: indexPath.section) - 1 {
                 let cell = absenteesTbl.cellForRow(at: indexPath) as! AbsenteeStudentCell
-                cell.define(student: absenteesOnSelectedTable[indexPath.row])
-                print(cell.absentee.getFullName(), cell.absentee.getDatesLate())
+                print(cell.absentee.datesLate.description)
+                present(cell.displayDatesLate(), animated: true, completion: nil)
             }
         }
     }

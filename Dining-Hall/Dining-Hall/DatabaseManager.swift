@@ -33,8 +33,8 @@ class DatabaseManager {
     private static let getStudentsWithIDQuery = "SELECT * FROM Arrangements WHERE (studentNo = (?))"
     private static let getStudentsOnColumnQuery = "SELECT * FROM Arrangements WHERE (seatingPosition LIKE (?))"
     private static let getAllAbsenteesQuery = "SELECT * FROM Absentees"
-    private static let getAbsenteeIfExistsQuery = "SELECT OR IGNORE absentDates FROM Absentees WHERE (studentNo = (?))"
-    private static let updateAbsenteeQuery = "UPDATE Absentees SET (absentDates = (?)) WHERE (studentNo = (?))"
+    private static let getAbsenteeIfExistsQuery = "SELECT absentDates FROM Absentees WHERE (studentNo = (?))"
+    private static let updateAbsenteeQuery = "UPDATE Absentees SET absentDates = (?) WHERE studentNo = (?)"
     
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -204,13 +204,15 @@ class DatabaseManager {
     
     private static func bindToUpdateAbsenteeStatement(statement: OpaquePointer?, studentNo: Int, date: String) -> OpaquePointer? {
         
-        if sqlite3_bind_int64(statement, 1, sqlite3_int64(studentNo)) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 1, date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding dates")
+        }
+        
+        if sqlite3_bind_int64(statement, 2, sqlite3_int64(studentNo)) != SQLITE_OK {
             print("Error binding studentNo")
         }
         
-        if sqlite3_bind_text(statement, 2, date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
-            print("Error binding dates")
-        }
+       
         
         return statement
     }
@@ -293,17 +295,17 @@ class DatabaseManager {
             print("Error preparing statement")
         }
         
-        statement = bindToAddAbsenteeStatement(statement: statement, studentNo: studentNo ,date: DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short))
+        statement = bindToAddAbsenteeStatement(statement: statement, studentNo: studentNo ,date: "\(DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")),")
         
         if sqlite3_step(statement) == SQLITE_DONE {
-            print("Student saved succesfully")
+            print("Absentee saved succesfully")
         }
         
         
     }
     
     static func updateAbsentee(outdatedRecord: AbsenteeStudent, studentNoToUpdate: Int, dateToAppend: Date) {
-        let updatedDate = "\(outdatedRecord.getDatesLate()), \(DateFormatter.localizedString(from: dateToAppend, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short))"
+        let updatedDate = "\(outdatedRecord.getDatesLate()), \(DateFormatter.localizedString(from: dateToAppend, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")),"
         var statement: OpaquePointer?
         
         if sqlite3_prepare(db, updateAbsenteeQuery, -1, &statement, nil) != SQLITE_OK {

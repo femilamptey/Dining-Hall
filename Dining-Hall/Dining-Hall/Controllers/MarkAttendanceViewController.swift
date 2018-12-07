@@ -58,9 +58,9 @@ class MarkAttendanceViewController: UIViewController, UITableViewDataSource, UIT
                     DatabaseManager.addAbsentee(studentNo: student.getStudentNo(), date: date)
                     print("Saved")
                 } else {
-                    let outdatedRecord = DatabaseManager.getAbsenteeIfExists(studentNo: student.getStudentNo())
+                    guard let outdatedRecord = DatabaseManager.getAbsenteeIfExists(studentNo: student.getStudentNo()) else { break }
                   //Create updateAbsentee method and call it here
-                    DatabaseManager.addAbsentee(studentNo: student.getStudentNo(), date: date)
+                    DatabaseManager.updateAbsentee(outdatedRecord: outdatedRecord, studentNoToUpdate: student.getStudentNo(), dateToAppend: date)
                 }
             }
         }

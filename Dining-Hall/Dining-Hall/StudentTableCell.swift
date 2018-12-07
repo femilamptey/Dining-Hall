@@ -71,6 +71,13 @@ class AbsenteeStudentCell: GenericStudentCell {
         super.define(student: student)
     }
     
+    func displayDatesLate() -> UIAlertController {
+        let alert: UIAlertController = UIAlertController(title: absentee.getFullName(), message: absentee.getDatesLate(), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    
+        return alert
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         self.absentee = AbsenteeStudent(datesLate: "None", student: DatabaseStudent(studentNo: 0, fullName: "Dummy", seatingArrangement: "--"))
         super.init(style: style, reuseIdentifier: reuseIdentifier)
