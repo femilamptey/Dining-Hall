@@ -8,7 +8,16 @@
 
 import Foundation
 
-class DatabaseStudent: ImportedStudent {
+class DatabaseStudent: ImportedStudent, Comparable {
+    
+    static func < (lhs: DatabaseStudent, rhs: DatabaseStudent) -> Bool {
+        return lhs.getStudentNo() < rhs.getStudentNo()
+    }
+    
+    static func == (lhs: DatabaseStudent, rhs: DatabaseStudent) -> Bool {
+        return lhs.getStudentNo() == rhs.getStudentNo()
+    }
+    
     private let studentNo: Int
     
     init(studentNo: Int, fullName: String, seatingArrangement: String) {
@@ -20,8 +29,22 @@ class DatabaseStudent: ImportedStudent {
 
 }
 
-class AbsenteeStudent {
+class AbsenteeStudent: Student {
+    private var datesLate: [String]
     
+    init(datesLate: String, student: DatabaseStudent) {
+        self.datesLate = []
+        let dates = datesLate.split(separator: ",")
+        for date in dates {
+            self.datesLate.append(String(date))
+        }
+        super.init(student: student)
+        self.setAttendance(presence: false)
+    }
+    
+    public func getDatesLate() -> String {
+        return datesLate.joined(separator: "\n")
+    }
 }
 
 class Student: DatabaseStudent {
@@ -48,6 +71,7 @@ class Student: DatabaseStudent {
 }
 
 class ImportedStudent {
+    
     private let fullName: String
     private let seatingArrangement: String
     

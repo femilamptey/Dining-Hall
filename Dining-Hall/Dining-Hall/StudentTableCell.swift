@@ -8,10 +8,8 @@
 
 import UIKit
 
-class StudentTableCell: UITableViewCell {
+class GenericStudentCell: UITableViewCell {
     
-    var radioBtnImageView: UIImageView!
-    var radioBtnImage: UIImage!
     var studentNameLabel: UILabel!
     var student: Student
     
@@ -19,8 +17,30 @@ class StudentTableCell: UITableViewCell {
         self.student = student
         studentNameLabel.text = "\(student.getStudentNo())      \(student.getFullName())"
         studentNameLabel.frame = super.frame
+        self.addSubview(studentNameLabel)
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        student = Student(student: DatabaseStudent(studentNo: 0, fullName: "Dummy", seatingArrangement: "--"))
+        studentNameLabel = UILabel()
+        studentNameLabel.text = student.getFullName()
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class StudentTableCell: GenericStudentCell {
+    
+    var radioBtnImageView: UIImageView!
+    var radioBtnImage: UIImage!
+    
+    override func define(student: Student) {
+        super.define(student: student)
         radioBtnImageView.frame = CGRect(x: 399, y: 0, width: 59, height: 40)
-        
         if student.isPresent() {
             self.radioBtnImage = UIImage(imageLiteralResourceName: "RadioButtonUnselected")
         } else {
@@ -28,7 +48,6 @@ class StudentTableCell: UITableViewCell {
         }
         self.radioBtnImageView.image = self.radioBtnImage
         self.addSubview(radioBtnImageView)
-        self.addSubview(studentNameLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,11 +55,29 @@ class StudentTableCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        self.studentNameLabel = UILabel()
-        self.student = Student(student: DatabaseStudent(studentNo: 0, fullName: "Dummy", seatingArrangement: "--"))
         self.radioBtnImage = UIImage(imageLiteralResourceName: "RadioButtonUnselected")
         self.radioBtnImageView = UIImageView(image: self.radioBtnImage)
         self.radioBtnImageView.contentMode = UIViewContentMode.scaleAspectFit
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+}
+
+class AbsenteeStudentCell: GenericStudentCell {
+    
+    var absentee: AbsenteeStudent
+    
+    func define(student: AbsenteeStudent) {
+        self.absentee = student
+        super.define(student: student)
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        self.absentee = AbsenteeStudent(datesLate: "None", student: DatabaseStudent(studentNo: 0, fullName: "Dummy", seatingArrangement: "--"))
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

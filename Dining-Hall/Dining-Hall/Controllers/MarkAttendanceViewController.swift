@@ -48,6 +48,24 @@ class MarkAttendanceViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    @IBAction func save(_ sender: Any) {
+        let date: Date = Date()
+        
+        for student in students {
+            if !student.isPresent() {
+                //Add student to the Absentee database table
+                if !DatabaseManager.doesAbsenteeExist(student: student) {
+                    DatabaseManager.addAbsentee(studentNo: student.getStudentNo(), date: date)
+                    print("Saved")
+                } else {
+                    let outdatedRecord = DatabaseManager.getAbsenteeIfExists(studentNo: student.getStudentNo())
+                  //Create updateAbsentee method and call it here
+                    DatabaseManager.addAbsentee(studentNo: student.getStudentNo(), date: date)
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == tablesTbl {
@@ -58,7 +76,6 @@ class MarkAttendanceViewController: UIViewController, UITableViewDataSource, UIT
         } else {
             var cell: StudentTableCell!
             cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentTableCell
-            self.getSelectedStudents()
             if indexPath.row <= studentsOnSelectedTable.count - 1 {
                 cell.define(student: studentsOnSelectedTable[indexPath.row])
             }
@@ -69,10 +86,16 @@ class MarkAttendanceViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tablesTbl {
             selectedTable = (tablesTbl.cellForRow(at: indexPath)?.textLabel!.text!)!
+            self.getSelectedStudents()
             namesTbl.reloadData()
         } else {
             if indexPath.row <= namesTbl.numberOfRows(inSection: indexPath.section) - 1 {
-                students[indexPath.row].mark()
+                studentsOnSelectedTable[indexPath.row].mark()
+                for i in 0...students.count - 1 {
+                    if students[i] == studentsOnSelectedTable[indexPath.row]  {
+                        students[i].mark()
+                    }
+                }
                 namesTbl.reloadData()
             }
         }
