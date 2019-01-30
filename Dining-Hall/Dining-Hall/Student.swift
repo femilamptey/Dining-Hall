@@ -30,7 +30,7 @@ class DatabaseStudent: ImportedStudent, Comparable {
 }
 
 class AbsenteeStudent: Student {
-     var datesLate: [String]
+    private var datesLate: [String]
     
     init(datesLate: String, student: DatabaseStudent) {
         self.datesLate = []
@@ -46,9 +46,11 @@ class AbsenteeStudent: Student {
         if datesLate.count == 0 {
             return "This student has never been late"
         } else {
-        return "This student was late on: \n\(datesLate.joined(separator: "\n"))"
+        return "\(datesLate.joined(separator: "\n"))"
         }
     }
+    
+    public func numberOfTimesLate() -> Int { return datesLate.count }
 }
 
 class Student: DatabaseStudent {

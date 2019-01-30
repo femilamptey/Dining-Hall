@@ -16,6 +16,7 @@
 		89582A1D215086D60029E81F /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1C215086D60029E81F /* TableCell.swift */; };
 		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
 		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
+		8983976F21FEDE2F008940BB /* PunishmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */; };
 		898849DA208A281400ED5489 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898849D9208A281400ED5489 /* Student.swift */; };
 		898ED1332041956800AB8726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1322041956800AB8726 /* AppDelegate.swift */; };
 		898ED1352041956800AB8726 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1342041956800AB8726 /* MasterViewController.swift */; };
@@ -61,6 +62,7 @@
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
 		8969117120853D00000EC783 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8969117320853D2B000EC783 /* DBManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManagerViewController.swift; sourceTree = "<group>"; };
+		8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunishmentListViewController.swift; sourceTree = "<group>"; };
 		898849D9208A281400ED5489 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		898ED12F2041956800AB8726 /* Dining Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dining Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898ED1322041956800AB8726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */,
 				8950786F2174F9B100BD8CC2 /* MarkAttendanceViewController.swift */,
 				8969117320853D2B000EC783 /* DBManagerViewController.swift */,
+				8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
 				890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */,
 				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
+				8983976F21FEDE2F008940BB /* PunishmentListViewController.swift in Sources */,
 				89CF712B2057F645005B7D43 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

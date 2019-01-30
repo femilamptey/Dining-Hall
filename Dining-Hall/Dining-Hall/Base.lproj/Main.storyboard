@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5" y="-701"/>
+            <point key="canvasLocation" x="-282" y="-324"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -42,21 +42,74 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOS Logo" translatesAutoresizingMaskIntoConstraints="NO" id="X9D-5G-GBS">
-                                <rect key="frame" x="308" y="64" width="460" height="460"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUZ-4b-naI">
+                                <rect key="frame" x="308" y="64" width="460" height="900"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SOS Logo" translatesAutoresizingMaskIntoConstraints="NO" id="X9D-5G-GBS">
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="460"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="460" id="dV3-1b-8Lx"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAN-KH-IqO">
+                                        <rect key="frame" x="0.0" y="384" width="460" height="1160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1160" id="901-WP-ZpR"/>
+                                        </constraints>
+                                        <mutableString key="text">Welcome to the Dining Hall Application. To use the application, access the main menu and choose one of the following functionalities:   
+
+Adding Seating Arrangements
+Marking Attendance
+Reviewing Absentees
+View Punishment List (These are the students who have been three times or more)
+Managing the Database
+
+Adding Seating Arrangement: Save the CSV file containing the seating arrangements unto the iPad, then select it from the document picker. The first cell in every row should be the name of the table, and every subsequent value in the row should be the name of the students, as shown below: 
+
+A1, NAME, NAME2, NAME3, NAME4
+B1, NAME5, NAME6, NAME7 , NAME8
+C1, NAME9, NAME10, NAME11, NAME12
+D1, NAME13, NAME14, NAME15, NAME16
+A2, NAME17, NAME18, NAME19, NAME20
+B2, NAME21, NAME22, NAME23, NAME24
+C2, NAME25, NAME26, NAME27, NAME28
+D2, NAME29, NAME30, NAME31, NAME32
+
+Marking Attendance: After storing seating allocations, the Marking Attendance screen presents each table and the students on the table. All students are initially marked as present. Tap on a student to make them absent, which turns a radio button red, and tap on a table name to view another table. Select save to store or update all absentees into the database.
+
+Reviewing Absentees: This view allows you to see which students on each table were absent for meals. Tap on the name of the student to view the number of times the student has been absent, and the dates and times that they have been marked absent.
+
+Punishment List: The current rule is that absenteeism more than three times or more calls for punishment. This view presents all the students in the database who have been absent over three times.
+
+Managing the Database: This view allows you to review seating allocations and the available tables in the Dining Hall. It allows you to clear all seating arrangements, available tables and absentees from the database in order to store new arrangements.</mutableString>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="460" id="dV3-1b-8Lx"/>
+                                    <constraint firstItem="X9D-5G-GBS" firstAttribute="centerX" secondItem="gUZ-4b-naI" secondAttribute="centerX" id="6o3-sb-V7W"/>
+                                    <constraint firstItem="X9D-5G-GBS" firstAttribute="top" secondItem="gUZ-4b-naI" secondAttribute="top" id="97h-Xp-c4q"/>
+                                    <constraint firstItem="hAN-KH-IqO" firstAttribute="leading" secondItem="X9D-5G-GBS" secondAttribute="leading" id="B5I-ur-OUj"/>
+                                    <constraint firstAttribute="trailing" secondItem="hAN-KH-IqO" secondAttribute="trailing" id="Lv0-NS-pZr"/>
+                                    <constraint firstAttribute="trailing" secondItem="X9D-5G-GBS" secondAttribute="trailing" id="Ngt-fy-94A"/>
+                                    <constraint firstItem="hAN-KH-IqO" firstAttribute="leading" secondItem="gUZ-4b-naI" secondAttribute="leading" id="Nnn-2a-6sR"/>
+                                    <constraint firstItem="X9D-5G-GBS" firstAttribute="leading" secondItem="gUZ-4b-naI" secondAttribute="leading" id="Ula-DX-w6Q"/>
+                                    <constraint firstAttribute="bottom" secondItem="hAN-KH-IqO" secondAttribute="bottom" constant="-644" id="cs9-t3-Ach"/>
+                                    <constraint firstAttribute="bottom" secondItem="X9D-5G-GBS" secondAttribute="bottom" constant="440" id="feG-Yo-8jw"/>
+                                    <constraint firstItem="hAN-KH-IqO" firstAttribute="trailing" secondItem="X9D-5G-GBS" secondAttribute="trailing" id="l0a-wV-oCW"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gUZ-4b-naI" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="1SY-rB-tKj"/>
+                            <constraint firstAttribute="trailing" secondItem="gUZ-4b-naI" secondAttribute="trailing" id="7Fu-iK-SHp"/>
                             <constraint firstItem="MTU-sm-uQZ" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" constant="908" id="A7T-eO-GLv"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="MTU-sm-uQZ" secondAttribute="trailing" constant="20" id="IH4-Dt-Z2U"/>
-                            <constraint firstItem="X9D-5G-GBS" firstAttribute="leading" secondItem="MTU-sm-uQZ" secondAttribute="leading" constant="-35" id="L4I-La-jqQ"/>
-                            <constraint firstItem="X9D-5G-GBS" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="Nix-16-Zw6"/>
-                            <constraint firstAttribute="trailing" secondItem="X9D-5G-GBS" secondAttribute="trailing" id="SVk-nN-4pO"/>
+                            <constraint firstItem="gUZ-4b-naI" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="308" id="Nxi-qH-abG"/>
                             <constraint firstItem="MTU-sm-uQZ" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="343" id="ba6-67-UTz"/>
+                            <constraint firstItem="MTU-sm-uQZ" firstAttribute="top" secondItem="gUZ-4b-naI" secondAttribute="bottom" constant="8" id="dSr-SM-Pv1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
@@ -68,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708.59375" y="128.90625"/>
+            <point key="canvasLocation" x="486.71875" y="386.71875"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -82,7 +135,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="-330"/>
+            <point key="canvasLocation" x="-1622" y="-176"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -125,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708.59375" y="-630.46875"/>
+            <point key="canvasLocation" x="487" y="-324"/>
         </scene>
         <!--Add Arangement View Controller-->
         <scene sceneID="Qhm-9N-BzX">
@@ -188,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ry3-q7-Mak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641.40625" y="-625.1953125"/>
+            <point key="canvasLocation" x="-2771" y="-1163"/>
         </scene>
         <!--View Absentees View Controller-->
         <scene sceneID="Ce1-u3-FDm">
@@ -280,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNR-hH-6dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640.625" y="209.765625"/>
+            <point key="canvasLocation" x="-2082" y="-1163"/>
         </scene>
         <!--Manager View Controller-->
         <scene sceneID="8y3-KB-0zm">
@@ -352,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFD-rz-qqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640.625" y="-2082.421875"/>
+            <point key="canvasLocation" x="-1370" y="-1163"/>
         </scene>
         <!--Seating Arrangements View Controller-->
         <scene sceneID="HKz-h1-Gdr">
@@ -418,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1f-wo-Unc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341.40625" y="-2821.2890625"/>
+            <point key="canvasLocation" x="-625" y="-1163"/>
         </scene>
         <!--Mark Attendance View Controller-->
         <scene sceneID="dKS-mq-Hkm">
@@ -449,7 +502,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c52-7z-q8X">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="7mg-WI-OOq">
+                                    <navigationItem title="Mark Attendance" id="7mg-WI-OOq">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="1wy-On-R01">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zyq-c0-i1d">
                                                 <rect key="frame" x="20" y="7" width="170" height="30"/>
@@ -518,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYI-71-KZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2549" y="-1470"/>
+            <point key="canvasLocation" x="96" y="-1163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -534,15 +587,91 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
+            <point key="canvasLocation" x="-282" y="387"/>
+        </scene>
+        <!--Punishment List View Controller-->
+        <scene sceneID="5Oy-nY-9C5">
+            <objects>
+                <viewController storyboardIdentifier="Punishment List" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QGy-3n-c0a" customClass="PunishmentListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ig3-vS-IYu">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJB-Wk-bGB">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <items>
+                                    <navigationItem title="Punishment List" id="rLt-70-fVG">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="H1m-mR-6hD">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wan-V7-Dwq">
+                                                <rect key="frame" x="20" y="7" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                            </button>
+                                            <connections>
+                                                <segue destination="H1p-Uh-vWS" kind="show" id="aWS-vC-ylp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="lfH-jD-auG">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gPM-Rh-6pL">
+                                                <rect key="frame" x="578" y="7" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="save:" destination="QGy-3n-c0a" eventType="touchDown" id="unx-y7-Wtr"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ss-eJ-yRE">
+                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="960" id="SnJ-Du-f17"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="absenteeCell" id="8bM-1w-wf1">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8bM-1w-wf1" id="R1X-rE-wyd">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QGy-3n-c0a" id="6Ox-Jk-5vi"/>
+                                    <outlet property="delegate" destination="QGy-3n-c0a" id="17R-QK-CH2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xJB-Wk-bGB" firstAttribute="leading" secondItem="Ig3-vS-IYu" secondAttribute="leading" id="1Lh-ic-UW6"/>
+                            <constraint firstItem="4ss-eJ-yRE" firstAttribute="bottom" secondItem="4y5-uQ-Sl4" secondAttribute="bottom" id="BeG-2s-gfW"/>
+                            <constraint firstItem="4ss-eJ-yRE" firstAttribute="top" secondItem="xJB-Wk-bGB" secondAttribute="bottom" id="Lcz-c5-cVL"/>
+                            <constraint firstItem="4ss-eJ-yRE" firstAttribute="leading" secondItem="4y5-uQ-Sl4" secondAttribute="leading" id="UHo-G7-BKb"/>
+                            <constraint firstAttribute="trailing" secondItem="4ss-eJ-yRE" secondAttribute="trailing" id="ixn-od-6rN"/>
+                            <constraint firstItem="4ss-eJ-yRE" firstAttribute="trailing" secondItem="xJB-Wk-bGB" secondAttribute="trailing" id="oPb-DO-VM7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4y5-uQ-Sl4"/>
+                    </view>
+                    <connections>
+                        <outlet property="namesTbl" destination="4ss-eJ-yRE" id="lKM-hg-iBT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDq-NQ-xSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2834" y="-206"/>
         </scene>
     </scenes>
     <resources>
         <image name="SOS Logo" width="272" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xzW-dD-btm"/>
+        <segue reference="O1l-Db-6Do"/>
         <segue reference="Tll-UG-LXB"/>
-        <segue reference="1jn-Jd-oXc"/>
+        <segue reference="aWS-vC-ylp"/>
     </inferredMetricsTieBreakers>
 </document>

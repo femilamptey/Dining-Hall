@@ -439,6 +439,19 @@ class DatabaseManager {
         return student
     }
     
+    static func getPunishmentList() -> [AbsenteeStudent] {
+        var punishmentList: [AbsenteeStudent] = []
+        let absentees = self.getAllAbsentees()
+        
+        for absentee in absentees {
+            if absentee.numberOfTimesLate() >= 3 {
+                punishmentList.append(absentee)
+            }
+        }
+        
+        return punishmentList
+    }
+    
     static func getStudentsOnTable(table: String) -> [DatabaseStudent] {
         var databaseStudents: [DatabaseStudent] = []
         var statement: OpaquePointer?
