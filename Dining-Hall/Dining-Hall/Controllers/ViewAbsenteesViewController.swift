@@ -58,12 +58,22 @@ class ViewAbsenteesViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tablesTbl {
             selectedTable = (tablesTbl.cellForRow(at: indexPath)?.textLabel!.text!)!
-            absenteesTbl.reloadData()
+            absenteesTbl.beginUpdates()
+            absenteesTbl.reloadRows(at: absenteesTbl.indexPathsForVisibleRows!, with: .fade)
+            absenteesTbl.endUpdates()
         } else {
             if indexPath.row <= absenteesTbl.numberOfRows(inSection: indexPath.section) - 1 {
                 let cell = absenteesTbl.cellForRow(at: indexPath) as! AbsenteeStudentCell
                 present(cell.displayDatesLate(), animated: true, completion: nil)
             }
         }
+    }
+    
+    @IBAction func clearAbsenteesList() {
+        present(DatabaseManager.clearAbsenteesDB(), animated: true)
+        absentees = []
+        tables = []
+        absenteesOnSelectedTable = []
+        absenteesTbl.reloadData()
     }
 }

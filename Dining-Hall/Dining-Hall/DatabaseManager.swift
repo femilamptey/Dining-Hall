@@ -14,6 +14,7 @@ class DatabaseManager {
     private static var db: OpaquePointer? = nil
     private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
     private static let createTablesTableQuery: String = "CREATE TABLE IF NOT EXISTS Tables (tableName TEXT PRIMARY KEY, column TEXT)"
+    private static let checkIfArrangementsTableIsEmptyQuery: String = "SELECT COUNT(*) FROM Arrangements"
     private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
     private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY, absentDates TEXT)"
     private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (date TEXT PRIMARY KEY, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
@@ -142,6 +143,26 @@ class DatabaseManager {
             
             return alertController
         }
+    }
+    
+    public static func checkIfArrangementsTableIsEmpty() -> Bool {
+        var rowCount: Int = 1
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, checkIfArrangementsTableIsEmptyQuery, -1, &statement, nil) != SQLITE_OK {
+            
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            rowCount = Int(sqlite3_column_int(statement, 0))
+        }
+        
+        if rowCount == 0 {
+            return false
+        } else {
+            return true
+        }
+        
     }
     
     private static func bindToAddTableStatement(statement: OpaquePointer?, tableName: String, column: String) -> OpaquePointer? {
@@ -305,7 +326,7 @@ class DatabaseManager {
     }
     
     static func updateAbsentee(outdatedRecord: AbsenteeStudent, studentNoToUpdate: Int, dateToAppend: Date) {
-        let updatedDate = "\(outdatedRecord.getDatesLate()), \(DateFormatter.localizedString(from: dateToAppend, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")),"
+        let updatedDate = "\(outdatedRecord.getOutdatedDates()) , \(DateFormatter.localizedString(from: dateToAppend, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")) ,"
         var statement: OpaquePointer?
         
         if sqlite3_prepare(db, updateAbsenteeQuery, -1, &statement, nil) != SQLITE_OK {
@@ -444,7 +465,7 @@ class DatabaseManager {
         let absentees = self.getAllAbsentees()
         
         for absentee in absentees {
-            if absentee.numberOfTimesLate() >= 3 {
+            if absentee.getNumberOfTimesAbsent() >= 3 {
                 punishmentList.append(absentee)
             }
         }

@@ -72,7 +72,7 @@ class AbsenteeStudentCell: GenericStudentCell {
     }
     
     func displayDatesLate() -> UIAlertController {
-        let alert: UIAlertController = UIAlertController(title: absentee.getFullName(), message: absentee.getDatesLate(), preferredStyle: UIAlertControllerStyle.alert)
+        let alert: UIAlertController = UIAlertController(title: absentee.getFullName(), message: "\(absentee.getFullName()) has been late \(absentee.getNumberOfTimesAbsent()) times on: \n \(absentee.getDatesAbsent())", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     
         return alert

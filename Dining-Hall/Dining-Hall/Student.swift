@@ -30,27 +30,30 @@ class DatabaseStudent: ImportedStudent, Comparable {
 }
 
 class AbsenteeStudent: Student {
-    private var datesLate: [String]
+    private var datesAbsent: [String]
     
     init(datesLate: String, student: DatabaseStudent) {
-        self.datesLate = []
+        self.datesAbsent = []
         let dates = datesLate.split(separator: ",")
         for date in dates {
-            self.datesLate.append(String(date))
+            self.datesAbsent.append(String(date))
         }
         super.init(student: student)
         self.setAttendance(presence: false)
     }
     
-    public func getDatesLate() -> String {
-        if datesLate.count == 0 {
-            return "This student has never been late"
+    public func getDatesAbsent() -> String {
+        print(datesAbsent.description)
+        if datesAbsent.count == 0 {
+            return "This student has never been absent"
         } else {
-        return "\(datesLate.joined(separator: "\n"))"
+        return "\(datesAbsent.joined(separator: "\n"))"
         }
     }
     
-    public func numberOfTimesLate() -> Int { return datesLate.count }
+    public func getOutdatedDates() -> String { return "\(datesAbsent.joined(separator: ","))" }
+    
+    public func getNumberOfTimesAbsent() -> Int { return datesAbsent.count }
 }
 
 class Student: DatabaseStudent {

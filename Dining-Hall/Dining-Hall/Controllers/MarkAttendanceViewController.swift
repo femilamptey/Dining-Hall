@@ -84,6 +84,7 @@ class MarkAttendanceViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if tableView == tablesTbl {
             selectedTable = (tablesTbl.cellForRow(at: indexPath)?.textLabel!.text!)!
             self.getSelectedStudents()

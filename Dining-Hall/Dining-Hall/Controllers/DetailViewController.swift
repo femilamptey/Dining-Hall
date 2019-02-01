@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
     @IBOutlet weak var detailLabel: UINavigationItem!
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         configureView()
+        scrollView.contentSize = super.view.frame.size
     }
 
     override func didReceiveMemoryWarning() {

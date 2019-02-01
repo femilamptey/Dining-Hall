@@ -16,8 +16,14 @@ class AddArangementViewController: UIViewController, UIDocumentPickerDelegate {
     let documentPicker: UIDocumentPickerViewController! = UIDocumentPickerViewController(documentTypes: ["public.content","public.data"], in: .import)
     
     @IBAction func selectArrangement(_ sender: Any) {
-        documentPicker.delegate = self
-        present(documentPicker, animated: true, completion: nil)
+        if DatabaseManager.checkIfArrangementsTableIsEmpty() == true {
+            let alert = UIAlertController(title: "Cannot input new seating arrangements", message: "Clear the existing arrangements in the database first", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            documentPicker.delegate = self
+            present(documentPicker, animated: true, completion: nil)
+        }
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
