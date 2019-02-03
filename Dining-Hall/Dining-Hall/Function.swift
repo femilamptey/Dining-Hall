@@ -12,10 +12,12 @@ enum Function: String {
     case AddArrangement = "Add Arrangement"
     case MarkAttendance = "Mark Attendance"
     case ViewAbsentees = "View Absentees"
+    case PunishmentList = "Punishment List"
     case DatabaseManager = "Database Manager"
     
+    
     static func all() -> [Function] {
-        return [.AddArrangement, .MarkAttendance, .ViewAbsentees, .DatabaseManager]
+        return [.AddArrangement, .MarkAttendance, .ViewAbsentees, .PunishmentList, .DatabaseManager]
     }
     
 }

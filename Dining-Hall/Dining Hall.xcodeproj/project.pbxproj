@@ -10,11 +10,12 @@
 		890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890CB8A620AC2FD3009C207E /* DatabaseManager.swift */; };
 		892740A4211E1180000A1AE2 /* CSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892740A3211E1180000A1AE2 /* CSVImporter.swift */; };
 		893E7FA4212794FD00A2D3EE /* Transparent logo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 893E7FA3212794FD00A2D3EE /* Transparent logo.PNG */; };
-		893E7FA62127A2DC00A2D3EE /* SeatingArrangementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */; };
-		89582A1B215086BE0029E81F /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1A215086BE0029E81F /* StudentCell.swift */; };
+		895078702174F9B200BD8CC2 /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950786F2174F9B100BD8CC2 /* MarkAttendanceViewController.swift */; };
+		89582A1B215086BE0029E81F /* StudentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1A215086BE0029E81F /* StudentTableCell.swift */; };
 		89582A1D215086D60029E81F /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89582A1C215086D60029E81F /* TableCell.swift */; };
 		895DE4DE20854999004519D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 895DE4DD20854999004519D9 /* libsqlite3.tbd */; };
 		8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969117320853D2B000EC783 /* DBManagerViewController.swift */; };
+		8983976F21FEDE2F008940BB /* PunishmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */; };
 		898849DA208A281400ED5489 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898849D9208A281400ED5489 /* Student.swift */; };
 		898ED1332041956800AB8726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1322041956800AB8726 /* AppDelegate.swift */; };
 		898ED1352041956800AB8726 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1342041956800AB8726 /* MasterViewController.swift */; };
@@ -26,7 +27,6 @@
 		898ED1552041956800AB8726 /* Dining_HallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898ED1542041956800AB8726 /* Dining_HallUITests.swift */; };
 		89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */; };
 		89CF712B2057F645005B7D43 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF712A2057F645005B7D43 /* Function.swift */; };
-		89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */; };
 		89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */; };
 		89EF139C20586AF1004A0018 /* Default768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EF139B20586AF1004A0018 /* Default768x1024.png */; };
 /* End PBXBuildFile section */
@@ -53,13 +53,14 @@
 		890CB8A820AC47F3009C207E /* Dining Hall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining Hall.entitlements"; sourceTree = "<group>"; };
 		892740A3211E1180000A1AE2 /* CSVImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImporter.swift; sourceTree = "<group>"; };
 		893E7FA3212794FD00A2D3EE /* Transparent logo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Transparent logo.PNG"; path = "../../../../../../../Downloads/Transparent logo.PNG"; sourceTree = "<group>"; };
-		893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatingArrangementsViewController.swift; sourceTree = "<group>"; };
-		89582A1A215086BE0029E81F /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
+		8950786F2174F9B100BD8CC2 /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
+		89582A1A215086BE0029E81F /* StudentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableCell.swift; sourceTree = "<group>"; };
 		89582A1C215086D60029E81F /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		895DE4DD20854999004519D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dining Hall Bridging-Header.h"; sourceTree = "<group>"; };
 		8969117120853D00000EC783 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8969117320853D2B000EC783 /* DBManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManagerViewController.swift; sourceTree = "<group>"; };
+		8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunishmentListViewController.swift; sourceTree = "<group>"; };
 		898849D9208A281400ED5489 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		898ED12F2041956800AB8726 /* Dining Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dining Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898ED1322041956800AB8726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		898ED1562041956800AB8726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArrangementViewController.swift; sourceTree = "<group>"; };
 		89CF712A2057F645005B7D43 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
-		89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
 		89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAbsenteesViewController.swift; sourceTree = "<group>"; };
 		89EF139B20586AF1004A0018 /* Default768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default768x1024.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,11 +138,11 @@
 			children = (
 				898ED1342041956800AB8726 /* MasterViewController.swift */,
 				89EF13942058665F004A0018 /* ViewAbsenteesViewController.swift */,
-				89EF1392205863BB004A0018 /* MarkAttendanceViewController.swift */,
-				8969117320853D2B000EC783 /* DBManagerViewController.swift */,
 				89CF71282057EF99005B7D43 /* AddArrangementViewController.swift */,
 				898ED1362041956800AB8726 /* DetailViewController.swift */,
-				893E7FA52127A2DC00A2D3EE /* SeatingArrangementsViewController.swift */,
+				8950786F2174F9B100BD8CC2 /* MarkAttendanceViewController.swift */,
+				8969117320853D2B000EC783 /* DBManagerViewController.swift */,
+				8983976E21FEDE2F008940BB /* PunishmentListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -183,8 +183,8 @@
 				895DE4DF20854A25004519D9 /* Dining Hall Bridging-Header.h */,
 				898849D9208A281400ED5489 /* Student.swift */,
 				890CB8A620AC2FD3009C207E /* DatabaseManager.swift */,
+				89582A1A215086BE0029E81F /* StudentTableCell.swift */,
 				892740A3211E1180000A1AE2 /* CSVImporter.swift */,
-				89582A1A215086BE0029E81F /* StudentCell.swift */,
 				89582A1C215086D60029E81F /* TableCell.swift */,
 			);
 			path = "Dining-Hall";
@@ -358,19 +358,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89582A1B215086BE0029E81F /* StudentCell.swift in Sources */,
-				89EF1393205863BB004A0018 /* MarkAttendanceViewController.swift in Sources */,
+				89582A1B215086BE0029E81F /* StudentTableCell.swift in Sources */,
 				89582A1D215086D60029E81F /* TableCell.swift in Sources */,
 				898ED1372041956800AB8726 /* DetailViewController.swift in Sources */,
 				892740A4211E1180000A1AE2 /* CSVImporter.swift in Sources */,
-				893E7FA62127A2DC00A2D3EE /* SeatingArrangementsViewController.swift in Sources */,
 				898849DA208A281400ED5489 /* Student.swift in Sources */,
 				89CF71292057EF99005B7D43 /* AddArrangementViewController.swift in Sources */,
+				895078702174F9B200BD8CC2 /* MarkAttendanceViewController.swift in Sources */,
 				898ED1352041956800AB8726 /* MasterViewController.swift in Sources */,
 				8969117420853D2B000EC783 /* DBManagerViewController.swift in Sources */,
 				898ED1332041956800AB8726 /* AppDelegate.swift in Sources */,
 				890CB8A720AC2FD3009C207E /* DatabaseManager.swift in Sources */,
 				89EF13952058665F004A0018 /* ViewAbsenteesViewController.swift in Sources */,
+				8983976F21FEDE2F008940BB /* PunishmentListViewController.swift in Sources */,
 				89CF712B2057F645005B7D43 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,7 +17,6 @@ class SeatingArrangementsViewController: UIViewController, UICollectionViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let flowLayout = UICollectionViewFlowLayout()
         collectionView.register(TableCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         collectionView.delegate = self
@@ -48,7 +47,10 @@ class SeatingArrangementsViewController: UIViewController, UICollectionViewDataS
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer) {
-        print("Tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "markingVC") as UIViewController
+        present(vc, animated:true, completion: nil)
+        let controller = vc as! MarkAttendanceViewController
     }
 
 }

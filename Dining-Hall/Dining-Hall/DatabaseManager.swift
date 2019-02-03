@@ -14,21 +14,29 @@ class DatabaseManager {
     private static var db: OpaquePointer? = nil
     private static let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
     private static let createTablesTableQuery: String = "CREATE TABLE IF NOT EXISTS Tables (tableName TEXT PRIMARY KEY, column TEXT)"
+    private static let checkIfArrangementsTableIsEmptyQuery: String = "SELECT COUNT(*) FROM Arrangements"
     private static let createArrangementTableQuery: String = "CREATE TABLE IF NOT EXISTS Arrangements (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, seatingPosition TEXT)"
-    private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, absentCount INTEGER, absentDates TEXT)"
+    private static let createAbsenteeTableQuery: String = "CREATE TABLE IF NOT EXISTS Absentees (studentNo INTEGER PRIMARY KEY, absentDates TEXT)"
     private static let createWastageTableQuery: String = "CREATE TABLE IF NOT EXISTS Wastage (date TEXT PRIMARY KEY, breakfastWaste INTEGER, lunchWaste INTEGER, dinnerWaste INTEGER)"
     private static let fileURL: URL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ArrangementsDB.sqlite")
     private static let AddTableQuery = "INSERT OR REPLACE INTO Tables (tableName, column) VALUES (?, ?)"
     private static let AddArrangementQuery = "INSERT INTO Arrangements (name, seatingPosition) VALUES (?, ?)"
-    private static let AddAbsenteeQuery = "INSERT INTO Absentees (name, table, date) VALUES (?, ?, ?)"
+    private static let AddAbsenteeQuery = "INSERT INTO Absentees (studentNo, absentDates) VALUES (?, ?)"
     private static let AddWastageQuery = "INSERT INTO Wastage (date, breakfastWaste, lunchWaste, dinnerWaste) VALUES (?, ?, ?, ?)"
     private static let DropTablesTableQuery = "DROP TABLE IF EXISTS Tables"
     private static let DropArrangementTableQuery = "DROP TABLE IF EXISTS Arrangements"
     private static let DropAbsenteeTableQuery = "DROP TABLE IF EXISTS Absentees"
     private static let DropWastageTableQuery = "DROP TABLE IF EXISTS Wastage"
-    private static let getAllColumnsQuery = "SELECT column from Tables"
-    private static let getAllTablesQuery = "SELECT tableName from Tables"
+    private static let getAllColumnsQuery = "SELECT column FROM Tables"
+    private static let getAllTablesQuery = "SELECT tableName FROM Tables"
     private static let getAllStudentsAllocationsQuery = "SELECT * FROM Arrangements"
+    private static let getStudentsOnTableQuery = "SELECT * FROM Arrangements WHERE (seatingPosition = (?))"
+    private static let getStudentsWithIDQuery = "SELECT * FROM Arrangements WHERE (studentNo = (?))"
+    private static let getStudentsOnColumnQuery = "SELECT * FROM Arrangements WHERE (seatingPosition LIKE (?))"
+    private static let getAllAbsenteesQuery = "SELECT * FROM Absentees"
+    private static let getAbsenteeIfExistsQuery = "SELECT absentDates FROM Absentees WHERE (studentNo = (?))"
+    private static let updateAbsenteeQuery = "UPDATE Absentees SET absentDates = (?) WHERE studentNo = (?)"
+    
     private static var alertController: UIAlertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     private static var action  = UIAlertAction(title: "OK", style: .default, handler: nil)
     
@@ -137,7 +145,27 @@ class DatabaseManager {
         }
     }
     
-    private static func bindToTableStatement(statement: OpaquePointer?, tableName: String, column: String) -> OpaquePointer? {
+    public static func checkIfArrangementsTableIsEmpty() -> Bool {
+        var rowCount: Int = 1
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, checkIfArrangementsTableIsEmptyQuery, -1, &statement, nil) != SQLITE_OK {
+            
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            rowCount = Int(sqlite3_column_int(statement, 0))
+        }
+        
+        if rowCount == 0 {
+            return false
+        } else {
+            return true
+        }
+        
+    }
+    
+    private static func bindToAddTableStatement(statement: OpaquePointer?, tableName: String, column: String) -> OpaquePointer? {
         
         if sqlite3_bind_text(statement, 1, tableName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding table name")
@@ -150,7 +178,7 @@ class DatabaseManager {
         return statement
     }
     
-    private static func bindToArrangementStatement(statement: OpaquePointer?, fullName: String, table: String) -> OpaquePointer? {
+    private static func bindToAddArrangementStatement(statement: OpaquePointer?, fullName: String, table: String) -> OpaquePointer? {
         
         if sqlite3_bind_text(statement, 1, fullName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding last name")
@@ -163,18 +191,57 @@ class DatabaseManager {
         return statement
     }
     
-    private static func bindToAbsenteeStatement(statement: OpaquePointer?, fullName: String, table: String, date: NSDate) -> OpaquePointer? {
+    private static func bindToSelectFromTableStatement(statement: OpaquePointer?, table: String) -> OpaquePointer? {
         
-        if sqlite3_bind_text(statement, 1, fullName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 1, table, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding seating position")
+        }
+        
+        return statement
+    }
+    
+    private static func bindToSelectStudentWithIDStatement(statement: OpaquePointer?, studentNo: Int) -> OpaquePointer? {
+        
+        if sqlite3_bind_int64(statement, 1, sqlite3_int64(studentNo)) != SQLITE_OK {
+            print("Error binding seating position")
+        }
+        
+        return statement
+        
+    }
+    
+    private static func bindToAddAbsenteeStatement(statement: OpaquePointer?, studentNo: Int, date: String) -> OpaquePointer? {
+        
+        if sqlite3_bind_int64(statement, 1, sqlite3_int64(studentNo)) != SQLITE_OK {
             print("Error binding last name")
         }
         
-        if sqlite3_bind_text(statement, 2, table, -1, SQLITE_TRANSIENT) != SQLITE_OK {
-            print("Error binding absent count")
+        if sqlite3_bind_text(statement, 2, date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding lateness date")
         }
         
-        if sqlite3_bind_text(statement, 3, date.description, -1, SQLITE_TRANSIENT) != SQLITE_OK {
-            print("Error binding lateness date")
+        return statement
+    }
+    
+    private static func bindToUpdateAbsenteeStatement(statement: OpaquePointer?, studentNo: Int, date: String) -> OpaquePointer? {
+        
+        if sqlite3_bind_text(statement, 1, date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding dates")
+        }
+        
+        if sqlite3_bind_int64(statement, 2, sqlite3_int64(studentNo)) != SQLITE_OK {
+            print("Error binding studentNo")
+        }
+        
+       
+        
+        return statement
+    }
+    
+    private static func bindToSelectAbsenteeIfExistsStatement(statement: OpaquePointer?, studentNo: Int) -> OpaquePointer? {
+        
+        if sqlite3_bind_int64(statement, 1, sqlite3_int64(studentNo)) != SQLITE_OK {
+            
         }
         
         return statement
@@ -207,7 +274,7 @@ class DatabaseManager {
             print("Error preparing statement.")
         }
         
-        statement = bindToTableStatement(statement: statement, tableName: tableName, column: column)
+        statement = bindToAddTableStatement(statement: statement, tableName: tableName, column: column)
         
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Column saved sucessfully")
@@ -221,7 +288,7 @@ class DatabaseManager {
             print("Error preparing statement")
         }
         
-        statement = bindToArrangementStatement(statement: statement, fullName: fullName, table: table)
+        statement = bindToAddArrangementStatement(statement: statement, fullName: fullName, table: table)
         
         if sqlite3_step(statement) == SQLITE_DONE {
             print("Student saved succesfully")
@@ -229,19 +296,48 @@ class DatabaseManager {
         
     }
     
-    static func addAbsentee(fullName: String, table: String, date: NSDate) {
+    static func doesAbsenteeExist(student: Student) -> Bool {
+        var exists: Bool = false
+        
+        for absentee in self.getAllAbsentees() {
+            if student == absentee {
+               exists = true
+               break
+            }
+        }
+        
+        return exists
+    }
+    
+    static func addAbsentee(studentNo: Int, date: Date) {
         var statement: OpaquePointer?
         
         if sqlite3_prepare(db, AddAbsenteeQuery, -1, &statement, nil) != SQLITE_OK {
             print("Error preparing statement")
         }
         
-        statement = bindToAbsenteeStatement(statement: statement, fullName: fullName, table: table, date: date)
+        statement = bindToAddAbsenteeStatement(statement: statement, studentNo: studentNo ,date: "\(DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")),")
         
         if sqlite3_step(statement) == SQLITE_DONE {
-            print("Student saved succesfully")
+            print("Absentee saved succesfully")
         }
         
+        
+    }
+    
+    static func updateAbsentee(outdatedRecord: AbsenteeStudent, studentNoToUpdate: Int, dateToAppend: Date) {
+        let updatedDate = "\(outdatedRecord.getOutdatedDates()) , \(DateFormatter.localizedString(from: dateToAppend, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short).replacingOccurrences(of: ",", with: "")) ,"
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare(db, updateAbsenteeQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Error binding updates")
+        }
+        
+        statement = bindToUpdateAbsenteeStatement(statement: statement, studentNo: studentNoToUpdate, date: updatedDate)
+        
+        if sqlite3_step(statement) == SQLITE_DONE {
+            print("Updated")
+        }
     }
     
     static func addWastage(date: String, breakfastWaste: Int, lunchWaste: Int, dinnerWaste: Int) -> UIAlertController {
@@ -296,7 +392,9 @@ class DatabaseManager {
         
         while sqlite3_step(statement) == SQLITE_ROW {
             table = String.init(cString: sqlite3_column_text(statement, 0))
-            tables.append(table)
+            if !tables.contains(table) {
+                tables.append(table)
+            }
         }
         
         return tables
@@ -322,7 +420,113 @@ class DatabaseManager {
         
         return databaseStudents
     }
+    
+    static func getStudentWithID(studentNo: Int) -> DatabaseStudent {
+        var databaseStudent: DatabaseStudent = DatabaseStudent(studentNo: 0, fullName: "dummy", seatingArrangement: "--")
+        var statement: OpaquePointer?
+        var studentID: Int
+        var fullName: String
+        var seatingPosition: String
+        
+        if sqlite3_prepare_v2(db, getStudentsWithIDQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve student")
+        }
+        
+        statement = bindToSelectStudentWithIDStatement(statement: statement, studentNo: studentNo)
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            studentID = Int(sqlite3_column_int64(statement, 0))
+            fullName = String.init(cString: sqlite3_column_text(statement, 1))
+            seatingPosition = String.init(cString: sqlite3_column_text(statement, 2))
+            databaseStudent = DatabaseStudent(studentNo: studentID, fullName: fullName, seatingArrangement: seatingPosition)
+        }
+        
+        return databaseStudent
+    }
+    
+    static func getAbsenteeIfExists(studentNo: Int) -> AbsenteeStudent? {
+        var statement: OpaquePointer?
+        var student: AbsenteeStudent? = nil
+        
+        if sqlite3_prepare_v2(db, getAbsenteeIfExistsQuery, -1, &statement, nil) != SQLITE_OK {
+            
+        }
+        
+        statement = bindToSelectAbsenteeIfExistsStatement(statement: statement, studentNo: studentNo)
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            student = AbsenteeStudent(datesLate: String.init(cString: sqlite3_column_text(statement, 0)), student: self.getStudentWithID(studentNo: studentNo))
+        }
+        return student
+    }
+    
+    static func getPunishmentList() -> [AbsenteeStudent] {
+        var punishmentList: [AbsenteeStudent] = []
+        let absentees = self.getAllAbsentees()
+        
+        for absentee in absentees {
+            if absentee.getNumberOfTimesAbsent() >= 3 {
+                punishmentList.append(absentee)
+            }
+        }
+        
+        return punishmentList
+    }
+    
+    static func getStudentsOnTable(table: String) -> [DatabaseStudent] {
+        var databaseStudents: [DatabaseStudent] = []
+        var statement: OpaquePointer?
+        var studentID: Int
+        var fullName: String
+        var seatingPosition: String
+        
+        if sqlite3_prepare_v2(db, getStudentsOnTableQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve students")
+        }
+        
+        statement = bindToSelectFromTableStatement(statement: statement, table: table)
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            studentID = Int(sqlite3_column_int64(statement, 0))
+            fullName = String.init(cString: sqlite3_column_text(statement, 1))
+            seatingPosition = String.init(cString: sqlite3_column_text(statement, 2))
+            databaseStudents.append(DatabaseStudent.init(studentNo: studentID, fullName: fullName, seatingArrangement: seatingPosition))
+        }
+        
+        return databaseStudents
+    }
 
+    static func getAllAbsentees() -> [AbsenteeStudent] {
+        var absenteeStudents: [AbsenteeStudent] = []
+        var statement: OpaquePointer?
+        var datesLate: String
+        
+        if sqlite3_prepare_v2(db, getAllAbsenteesQuery, -1, &statement, nil) != SQLITE_OK {
+            print("Cannot retrieve absentees")
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let databaseStudent = getStudentWithID(studentNo: Int(sqlite3_column_int(statement, 0)))
+            datesLate = String.init(cString: sqlite3_column_text(statement, 1))
+            absenteeStudents.append(AbsenteeStudent(datesLate: datesLate, student: databaseStudent))
+        }
+        
+        return absenteeStudents
+    }
+    
+    static func getAbsenteesOnTable(table: String) -> [AbsenteeStudent] {
+        var absenteeStudentsOnTable: [AbsenteeStudent] = []
+        let absentees = self.getAllAbsentees()
+        
+        for absentee in absentees {
+            if absentee.getSeatingArrangement() == table {
+                absenteeStudentsOnTable.append(absentee)
+            }
+        }
+        
+        return absenteeStudentsOnTable
+    }
+    
     static func importCSV(path: URL) -> UIAlertController {
         
         do {
